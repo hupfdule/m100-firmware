@@ -1,4 +1,7 @@
 VERSION="0.91.2-snapshot"
+#GIT_TAG=$(shell git tag --points-at HEAD)
+GIT_TAG=$(shell git describe --tags HEAD)
+VERSION:=$(VERSION)-hupfdule.$(GIT_TAG)
 
 export ARDUINO_DIRECTORIES_USER ?= ${CURDIR}/.arduino/user
 export ARDUINO_DIRECTORIES_DATA ?= ${CURDIR}/.arduino/data
@@ -16,6 +19,7 @@ else
 endif
 
 BOARDS =                \
+	hupfdule-model100       \
 	EZ/ErgoDox            \
 	Keyboardio/Atreus     \
 	Keyboardio/Model01    \
