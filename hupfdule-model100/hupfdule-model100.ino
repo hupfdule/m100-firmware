@@ -100,6 +100,9 @@
 // Support for the GeminiPR Stenography protocol
 #include "Kaleidoscope-Steno.h"
 
+// Support for symbolic names for a german QWERTZ layout
+#include "QWERTZ_T1.h"
+
 /** This 'enum' is a list of all the macros used by the Model 100's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
