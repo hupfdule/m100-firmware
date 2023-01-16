@@ -226,11 +226,11 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   M(MACRO_VERSION_INFO),  ___, Key_7, Key_8,      Key_9,              Key_KeypadSubtract, ___,
-   ___,                    ___, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___,
-                           ___, Key_1, Key_2,      Key_3,              Key_Equals,         ___,
-   ___,                    ___, Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter,
-   ___, ___, ___, ___,
+   M(MACRO_VERSION_INFO),  ___,                   ___,   Key_DE_Equals, ___,   Key_KeypadSubtract, ___,
+   ___,                    LSHIFT(Key_DE_Period), Key_7, Key_8,         Key_9, Key_KeypadAdd,      ___,
+                           Key_DE_Period,         Key_4, Key_5,         Key_6, Key_KeypadDivide,   Key_DE_Equals,
+   ___,                    Key_DE_Comma,          Key_1, Key_2,         Key_3, Key_KeypadMultiply, Key_Enter,
+   ___, ___, Key_0, Key_Enter,
    ___),
 
 
