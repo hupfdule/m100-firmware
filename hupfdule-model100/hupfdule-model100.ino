@@ -187,7 +187,7 @@ enum {
 KEYMAPS(
 
   [BONE] = KEYMAP_STACKED
-  (___,               Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,       Key_DE_5,       Key_LEDEffectNext,
+  (___,               Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,       Key_DE_5,       ___,
    Key_PageUp,        Key_DE_Q, Key_DE_T, Key_DE_U,       Key_A,          Key_DE_F,       Key_Tab,
    Key_CapsLock,      Key_DE_C, Key_DE_D, Key_DE_E,       Key_DE_I,       Key_DE_O,
    Key_PageDown,      Key_DE_X, Key_DE_V, Key_DE_UUmlaut, Key_DE_AUmlaut, Key_DE_OUmlaut, Key_Escape,
@@ -235,7 +235,7 @@ KEYMAPS(
 
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_CapsLock,
+  (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_LEDEffectNext,
    Key_Tab,  ___,             Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, LALT(Key_DE_F), Key_Spacebar,
    ___,      ___,             Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    LALT(Key_DE_B),
    ___,      Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete,     Key_Enter,
