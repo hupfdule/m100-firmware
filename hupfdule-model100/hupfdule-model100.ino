@@ -188,8 +188,8 @@ KEYMAPS(
 
   [BONE] = KEYMAP_STACKED
   (___,               Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,       Key_DE_5,       Key_LEDEffectNext,
-   Key_PageUp,        Key_DE_Q, Key_DE_D, Key_DE_U,       Key_A,          Key_DE_F,       Key_Tab,
-   Key_CapsLock,      Key_DE_C, Key_DE_T, Key_DE_E,       Key_DE_I,       Key_DE_O,
+   Key_PageUp,        Key_DE_Q, Key_DE_T, Key_DE_U,       Key_A,          Key_DE_F,       Key_Tab,
+   Key_CapsLock,      Key_DE_C, Key_DE_D, Key_DE_E,       Key_DE_I,       Key_DE_O,
    Key_PageDown,      Key_DE_X, Key_DE_V, Key_DE_UUmlaut, Key_DE_AUmlaut, Key_DE_OUmlaut, Key_Escape,
    Key_LeftShift,     Key_Backspace,  Key_LeftAlt,   Key_LeftControl,
    ShiftToLayer(FUNCTION),
