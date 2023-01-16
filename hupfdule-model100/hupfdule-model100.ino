@@ -237,15 +237,15 @@ KEYMAPS(
   [FUNCTION] =  KEYMAP_STACKED
   (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,     Key_CapsLock,
    Key_Tab,  ___,             Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, ___,        Key_Spacebar,
-   Key_Home, ___,             Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    ___,
-   Key_End,  Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete, Key_Enter,
+   ___,      ___,             Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    ___,
+   ___,      Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete, Key_Enter,
    ___, Key_Delete, ___, ___,
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_Escape,               Key_Tab,                  ___,             ___,              Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
-   Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,   Key_Backslash,    Key_Pipe,
+   Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,   Key_Backslash,    ___,
    ___, ___, Key_Enter, ___,
    ___),
 
