@@ -235,10 +235,10 @@ KEYMAPS(
 
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,     Key_CapsLock,
-   Key_Tab,  ___,             Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, ___,        Key_Spacebar,
-   ___,      ___,             Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    ___,
-   ___,      Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete, Key_Enter,
+  (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_CapsLock,
+   Key_Tab,  ___,             Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, LALT(Key_DE_F), Key_Spacebar,
+   ___,      ___,             Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    LALT(Key_DE_B),
+   ___,      Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete,     Key_Enter,
    ___, Key_Delete, ___, ___,
    ___,
 
