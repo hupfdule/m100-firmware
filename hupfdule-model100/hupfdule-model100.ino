@@ -255,7 +255,7 @@ KEYMAPS(
   (___, ___,                    ___,                    ___,                     ___,                      ___,             ___,
    ___, ___,                    Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      Key_DE_Caret,    ___,
    ___, Key_DE_Backslash,       Key_DE_Slash,           Key_DE_LeftCurlyBracket, Key_DE_RightCurlyBracket, Key_DE_Asterisk,
-   ___, Key_DE_Pound,           Key_DE_Dollar,          Key_DE_Pipe,             Key_DE_Tilde,             Key_DE_Backtick, ___,
+   ___, Key_DE_Pound,           Key_DE_Tilde,           Key_DE_Pipe,             Key_DE_Dollar,            Key_DE_Backtick, ___,
    ___, ___, ___, ___,
    ___,
 
