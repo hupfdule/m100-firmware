@@ -261,8 +261,8 @@ KEYMAPS(
 
    ___, ___,                    ___,                    ___,                     ___,                      ___,              ___,
    ___, Key_DE_ExclamationMark, Key_DE_LessThan,        Key_DE_GreaterThan,      Key_DE_Equals,            Key_DE_Ampersand, ___,
-        Key_DE_QuestionMark,    Key_DE_LeftParentheses, Key_DE_RightParentheses, Key_DE_Minus,             Key_DE_Colon,     Key_DE_At,
-   ___, Key_DE_Plus,            Key_DE_Percent,         Key_DE_DoubleQuote,      Key_DE_SingleQuote,       Key_DE_Semicolon, ___,
+        Key_DE_QuestionMark,    Key_DE_LeftParentheses, Key_DE_RightParentheses, Key_DE_Minus,             Key_DE_Semicolon, Key_DE_Colon,
+   ___, Key_DE_Plus,            Key_DE_Percent,         Key_DE_DoubleQuote,      Key_DE_SingleQuote,       Key_DE_At,        ___,
    ___, ___, ___, ___,
    ___),
 
