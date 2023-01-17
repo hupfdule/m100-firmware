@@ -191,14 +191,14 @@ KEYMAPS(
    Key_Backtick,      Key_DE_J, Key_DE_D, Key_DE_U,       Key_A,          Key_DE_X,       Key_Tab,
    Key_PageUp,        Key_DE_C, Key_DE_T, Key_DE_I,       Key_DE_E,       Key_DE_O,
    Key_PageDown,      Key_DE_F, Key_DE_V, Key_DE_UUmlaut, Key_DE_AUmlaut, Key_DE_OUmlaut, Key_Escape,
-   Key_LeftControl,   Key_Backspace,  Key_LeftGui,   Key_LeftShift,
+   Key_LeftShift,     Key_Backspace,  Key_LeftAlt,   Key_LeftControl,
    ShiftToLayer(FUNCTION),
 
    LockLayer(SYMBOL), Key_DE_6, Key_DE_7, Key_DE_8,       Key_DE_9,       Key_DE_0,       LockLayer(NUMPAD),
    Key_Enter,         Key_DE_P, Key_DE_H, Key_DE_L,       Key_DE_M,       Key_DE_W,       Key_DE_Eszett,
                       Key_DE_B, Key_DE_N, Key_DE_R,       Key_DE_S,       Key_DE_G,       Key_DE_Q,
    Key_RightAlt,      Key_DE_Y, Key_DE_Z, Key_DE_Comma,   Key_DE_Period,  Key_DE_K,       ___,
-   Key_RightShift,    Key_LeftAlt,    Key_Spacebar,  Key_RightControl,
+   Key_RightControl,  Key_LeftGui,    Key_Spacebar,  Key_RightShift,
    ShiftToLayer(FUNCTION)),
 
 
