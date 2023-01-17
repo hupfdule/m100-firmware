@@ -171,29 +171,12 @@ enum {
   */
 
 enum {
-  PRIMARY,
+  BONE,
+  QWERTY,
   NUMPAD,
   FUNCTION,
+  SYMBOL,
 };  // layers
-
-
-/**
-  * To change your keyboard's layout from QWERTY to DVORAK or COLEMAK, comment out the line
-  *
-  * #define PRIMARY_KEYMAP_QWERTY
-  *
-  * by changing it to
-  *
-  * // #define PRIMARY_KEYMAP_QWERTY
-  *
-  * Then uncomment the line corresponding to the layout you want to use.
-  *
-  */
-
-#define PRIMARY_KEYMAP_QWERTY
-// #define PRIMARY_KEYMAP_DVORAK
-// #define PRIMARY_KEYMAP_COLEMAK
-// #define PRIMARY_KEYMAP_CUSTOM
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -203,8 +186,23 @@ enum {
 
 KEYMAPS(
 
-#if defined (PRIMARY_KEYMAP_QWERTY)
-  [PRIMARY] = KEYMAP_STACKED
+  [BONE] = KEYMAP_STACKED
+  (___,               Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,       Key_DE_5,       Key_LEDEffectNext,
+   Key_Backtick,      Key_DE_J, Key_DE_D, Key_DE_U,       Key_A,          Key_DE_X,       Key_Tab,
+   Key_PageUp,        Key_DE_C, Key_DE_T, Key_DE_I,       Key_DE_E,       Key_DE_O,
+   Key_PageDown,      Key_DE_F, Key_DE_V, Key_DE_UUmlaut, Key_DE_AUmlaut, Key_DE_OUmlaut, Key_Escape,
+   Key_LeftControl,   Key_Backspace,  Key_LeftGui,   Key_LeftShift,
+   ShiftToLayer(FUNCTION),
+
+   LockLayer(SYMBOL), Key_DE_6, Key_DE_7, Key_DE_8,       Key_DE_9,       Key_DE_0,       LockLayer(NUMPAD),
+   Key_Enter,         Key_DE_P, Key_DE_H, Key_DE_L,       Key_DE_M,       Key_DE_W,       Key_DE_Eszett,
+                      Key_DE_B, Key_DE_N, Key_DE_R,       Key_DE_S,       Key_DE_G,       Key_DE_Q,
+   Key_RightAlt,      Key_DE_Y, Key_DE_Z, Key_DE_Comma,   Key_DE_Period,  Key_DE_K,       ___,
+   Key_RightShift,    Key_LeftAlt,    Key_Spacebar,  Key_RightControl,
+   ShiftToLayer(FUNCTION)),
+
+
+  [QWERTY] = KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
@@ -218,64 +216,6 @@ KEYMAPS(
    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
    ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_DVORAK)
-
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1,         Key_2,     Key_3,      Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, Key_Tab,
-   Key_PageUp,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_PageDown, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),   Key_6, Key_7, Key_8, Key_9, Key_0, LockLayer(NUMPAD),
-   Key_Enter,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
-                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
-   Key_RightAlt,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_COLEMAK)
-
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_B, Key_Tab,
-   Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_D, Key_V, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
-                  Key_M, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
-   Key_RightAlt,  Key_K, Key_H, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_CUSTOM)
-  // Edit this keymap to make a custom layout
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#else
-
-#error "No default keymap defined. You should make sure that you have a line like '#define PRIMARY_KEYMAP_QWERTY' in your sketch"
-
-#endif
-
 
 
   [NUMPAD] =  KEYMAP_STACKED
@@ -293,6 +233,7 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___),
 
+
   [FUNCTION] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
@@ -306,6 +247,22 @@ KEYMAPS(
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
+   ___),
+
+
+  [SYMBOL] = KEYMAP_STACKED
+  (___, ___,                    ___,                    ___,                     ___,                      ___,             ___,
+   ___, ___,                    Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      Key_DE_Caret,    ___,
+   ___, Key_DE_Backslash,       Key_DE_Slash,           Key_DE_LeftCurlyBracket, Key_DE_RightCurlyBracket, Key_DE_Asterisk,
+   ___, Key_DE_Pound,           Key_DE_Dollar,          Key_DE_Pipe,             Key_DE_Tilde,             Key_DE_Backtick, ___,
+   ___, ___, ___, ___,
+   ___,
+
+   ___, ___,                    ___,                    ___,                     ___,                      ___,              ___,
+   ___, Key_DE_ExclamationMark, Key_DE_LessThan,        Key_DE_GreaterThan,      Key_DE_Equals,            Key_DE_Ampersand, ___,
+        Key_DE_QuestionMark,    Key_DE_LeftParentheses, Key_DE_RightParentheses, Key_DE_Minus,             Key_DE_Colon,     Key_DE_At,
+   ___, Key_DE_Plus,            Key_DE_Percent,         Key_DE_DoubleQuote,      Key_DE_SingleQuote,       Key_DE_Semicolon, ___,
+   ___, ___, ___, ___,
    ___)
 ) // KEYMAPS(
 
