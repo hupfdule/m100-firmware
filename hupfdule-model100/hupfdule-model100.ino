@@ -123,6 +123,8 @@
 enum {
   MACRO_VERSION_INFO,
   MACRO_ANY,
+  MACRO_UNDEAD_CARET,
+  MACRO_UNDEAD_BACKTICK,
 };
 
 /**
@@ -151,6 +153,33 @@ static void anyKeyMacro(KeyEvent &event) {
   }
 }
 
+/**
+ * Simulate the keypress of the (dead) Caret (^) and afterwards simulate the
+ * keypress of the spacebar to behave like a non-dead Caret.
+ */
+static const macro_t *undeadCaretMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(DE_Caret),
+                 T(Spacebar)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
+ * Simulate the keypress of the shifted (dead) Acute (') and afterwards simulate the
+ * keypress of the spacebar to behave like a non-dead Backtick.
+ */
+static const macro_t *undeadBacktickMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(D(LeftShift),
+                 T(DE_Backtick),
+                 U(LeftShift),
+                 T(Spacebar)
+           );
+  }
+  return MACRO_NONE;
+}
 
 /**
  * macroAction dispatches keymap events that are tied to a macro
@@ -173,7 +202,17 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   case MACRO_ANY:
     anyKeyMacro(event);
     break;
+
+  case MACRO_UNDEAD_CARET:
+    return undeadCaretMacro(event);
+    break;
+
+  case MACRO_UNDEAD_BACKTICK:
+    return undeadBacktickMacro(event);
+    break;
   }
+
+
   return MACRO_NONE;
 }
 
@@ -309,10 +348,10 @@ KEYMAPS(
 
 
   [SYMBOL] = KEYMAP_STACKED // {{{2
-  (___, ___,                    ___,                    ___,                     ___,                      ___,             ___,
-   ___, ___,                    Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      Key_DE_Caret,    ___,
+  (___, ___,                    ___,                    ___,                     ___,                      ___,                      ___,
+   ___, ___,                    Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      M(MACRO_UNDEAD_CARET),    ___,
    ___, Key_DE_Backslash,       Key_DE_Slash,           Key_DE_LeftCurlyBracket, Key_DE_RightCurlyBracket, Key_DE_Asterisk,
-   ___, Key_DE_Pound,           Key_DE_Tilde,           Key_DE_Pipe,             Key_DE_Dollar,            Key_DE_Backtick, ___,
+   ___, Key_DE_Pound,           Key_DE_Tilde,           Key_DE_Pipe,             Key_DE_Dollar,            M(MACRO_UNDEAD_BACKTICK), ___,
    ___, ___, ___, ___,
    ___,
 
