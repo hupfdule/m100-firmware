@@ -284,17 +284,17 @@ enum {
 KEYMAPS(
 
   [BONE] = KEYMAP_STACKED  // {{{2
-  (___,               Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,         Key_DE_5,       ___,
-   Key_PageUp,        Key_DE_Q, Key_DE_T, Key_DE_U,       Key_A,            Key_DE_F,       Key_Tab,
-   Key_CapsLock,      Key_DE_C, Key_DE_D, Key_DE_E,       Key_DE_I,         Key_DE_O,
-   Key_PageDown,      Key_DE_X, Key_DE_V, Key_DE_Comma,   Key_DE_Period,    Key_DE_Minus,   Key_Escape,
-   OSM(LeftShift),    Key_Backspace,  Key_LeftAlt,   OSM(LeftControl),
+  (___,                   Key_DE_1, Key_DE_2, Key_DE_3,       Key_DE_4,         Key_DE_5,       ___,
+   Key_PageUp,            Key_DE_Q, Key_DE_T, Key_DE_U,       Key_A,            Key_DE_F,       Key_Tab,
+   LT(NUMPAD, CapsLock),  Key_DE_C, Key_DE_D, Key_DE_E,       Key_DE_I,         Key_DE_O,
+   Key_PageDown,          Key_DE_X, Key_DE_V, Key_DE_Comma,   Key_DE_Period,    Key_DE_Minus,   Key_Escape,
+   OSM(LeftShift),  Key_Backspace,  Key_LeftAlt,   OSM(LeftControl),
    ShiftToLayer(FUNCTION),
 
-   LockLayer(SYMBOL), Key_DE_6, Key_DE_7, Key_DE_8,       Key_DE_9,         Key_DE_0,       LockLayer(NUMPAD),
-   Key_Enter,         Key_DE_P, Key_DE_H, Key_DE_L,       Key_DE_M,         Key_DE_W,       Key_DE_Eszett,
-                      Key_DE_B, Key_DE_N, Key_DE_R,       Key_DE_S,         Key_DE_G,       Key_DE_J,
-   Key_RightAlt,      Key_DE_Y, Key_DE_Z, Key_DE_K,       Key_DE_Backslash, Key_DE_Slash,   OSL(UMLAUT),
+   LockLayer(SYMBOL),     Key_DE_6, Key_DE_7, Key_DE_8,       Key_DE_9,         Key_DE_0,       LockLayer(NUMPAD),
+   Key_Enter,             Key_DE_P, Key_DE_H, Key_DE_L,       Key_DE_M,         Key_DE_W,       Key_DE_Eszett,
+                          Key_DE_B, Key_DE_N, Key_DE_R,       Key_DE_S,         Key_DE_G,       Key_DE_J,
+   Key_RightAlt,          Key_DE_Y, Key_DE_Z, Key_DE_K,       Key_DE_Backslash, Key_DE_Slash,   OSL(UMLAUT),
    OSM(RightControl), Key_LeftGui,    Key_Spacebar,  OSM(RightShift),
    ShiftToLayer(FUNCTION)), // }}}2
 
