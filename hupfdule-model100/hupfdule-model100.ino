@@ -390,14 +390,153 @@ KEYMAPS(
 // Keyboardio Model 100.
 
 
-static kaleidoscope::plugin::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::plugin::LEDSolidColor solidOrange(140, 70, 0);
-static kaleidoscope::plugin::LEDSolidColor solidYellow(130, 100, 0);
-static kaleidoscope::plugin::LEDSolidColor solidGreen(0, 160, 0);
-static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::plugin::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::plugin::LEDSolidColor solidViolet(130, 0, 120);
+static kaleidoscope::plugin::LEDSolidColor solidRed    (160,   0,   0);
+static kaleidoscope::plugin::LEDSolidColor solidOrange (140,  70,   0);
+static kaleidoscope::plugin::LEDSolidColor solidYellow (130, 100,   0);
+static kaleidoscope::plugin::LEDSolidColor solidGreen  (  0, 160,   0);
+static kaleidoscope::plugin::LEDSolidColor solidBlue   (  0,  70, 130);
+static kaleidoscope::plugin::LEDSolidColor solidIndigo (  0,   0, 170);
+static kaleidoscope::plugin::LEDSolidColor solidViolet (130,   0, 120);
 
+// Colors names of the EGA palette, for convenient use in colormaps. Should
+// match the palette definition below. Optional, one can just use the indexes
+// directly, too.
+enum {
+  __B,  // BLACK → No Backlight
+  BLUE,
+  GREEN,
+  CYAN,
+  RED,
+  MAGENTA,
+  BROWN,
+  LIGHT_GRAY,
+  DARK_GRAY,
+  BRIGHT_BLUE,
+  BRIGHT_GREEN,
+  BRIGHT_CYAN,
+  BRIGHT_RED,
+  BRIGHT_MAGENTA,
+  YELLOW,
+  WHITE
+};
+
+// Define an EGA palette. Conveniently, that's exactly 16 colors, just like the
+// limit of LEDPaletteTheme.
+PALETTE(
+    CRGB(0x00, 0x00, 0x00),  // [0x0] black
+    CRGB(0x00, 0x00, 0xaa),  // [0x1] blue
+    CRGB(0x00, 0xaa, 0x00),  // [0x2] green
+    CRGB(0x00, 0xaa, 0xaa),  // [0x3] cyan
+    CRGB(0xaa, 0x00, 0x00),  // [0x4] red
+    CRGB(0xaa, 0x00, 0xaa),  // [0x5] magenta
+    CRGB(0xaa, 0x55, 0x00),  // [0x6] brown
+    CRGB(0xaa, 0xaa, 0xaa),  // [0x7] light gray
+    CRGB(0x55, 0x55, 0x55),  // [0x8] dark gray
+    CRGB(0x55, 0x55, 0xff),  // [0x9] bright blue
+    CRGB(0x55, 0xff, 0x55),  // [0xa] bright green
+    CRGB(0x55, 0xff, 0xff),  // [0xb] bright cyan
+    CRGB(0xff, 0x55, 0x55),  // [0xc] bright red
+    CRGB(0xff, 0x55, 0xff),  // [0xd] bright magenta
+    CRGB(0xff, 0xff, 0x55),  // [0xe] yellow
+    CRGB(0xff, 0xff, 0xff)   // [0xf] white
+)
+
+COLORMAPS(
+  [BONE] = COLORMAP_STACKED  // {{{2
+  (__B, __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B,
+   __B,
+
+   __B, __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B, __B, __B, __B,
+        __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B, __B, __B, __B,
+   __B, __B, __B, __B,
+   __B),     // }}}2
+
+
+  [QWERTY] = COLORMAP_STACKED // {{{2
+  (__B,   BROWN, BROWN, __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,
+   __B,
+
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+          __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B, __B,   __B,   __B,
+   __B), // }}}2
+
+
+  [NUMPAD] =  COLORMAP_STACKED // {{{2
+  (__B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,   __B,   __B,   __B,
+   __B,   __B,   __B,   __B,
+   __B,
+
+   __B,   __B,   __B,   BLUE,  __B,   BLUE,  __B,
+   __B,   GREEN, RED,   RED,   RED,   BLUE,  __B,
+          GREEN, RED,   RED,   RED,   BLUE,  BLUE,
+   __B,   GREEN, RED,   RED,   RED,   BLUE,  YELLOW,
+   __B, __B, RED, YELLOW,
+   __B), // }}}2
+
+
+  [FUNCTION] =  COLORMAP_STACKED // {{{2
+  (__B,       __B,     __B,          __B,          __B,          __B, __B,
+   __B,       __B,     BRIGHT_GREEN, BRIGHT_GREEN, BRIGHT_GREEN, __B, __B,
+   __B,       __B,     GREEN,        BRIGHT_GREEN, GREEN,        __B,
+   __B,       __B,     __B,          BLUE,         BLUE,         RED, __B,
+   __B,       RED,     __B,          __B,
+   __B,
+
+   MAGENTA,   __B,     __B,          __B,          __B,          __B, __B,
+   MAGENTA,   MAGENTA, __B,          __B,          __B,          __B, __B,
+              BLUE,    BLUE,         BLUE,         BLUE,         __B, __B,
+   __B,       RED,     MAGENTA,      MAGENTA,      MAGENTA,      __B, __B,
+   __B,       __B,     __B,          __B,
+   __B),      // }}}2
+
+
+  [SYMBOL] = COLORMAP_STACKED // {{{2
+  (__B, __B,  __B,  __B,  __B,  __B,  __B,
+   __B, __B,  BLUE, BLUE, BLUE, BLUE, __B,
+   __B, BLUE, BLUE, BLUE, BLUE, BLUE,
+   __B, BLUE, BLUE, BLUE, BLUE, BLUE, __B,
+   __B, __B,  __B,  __B,
+   __B,
+
+   __B, __B,  __B,  __B,  __B,  __B,  __B,
+   __B, BLUE, BLUE, BLUE, BLUE, BLUE, __B,
+        BLUE, BLUE, BLUE, BLUE, BLUE, BLUE,
+   __B, BLUE, BLUE, BLUE, BLUE, BLUE, __B,
+   __B, __B,  __B,  __B,
+   __B), // }}}2
+
+
+  [UMLAUT] = COLORMAP_STACKED // {{{2
+  (__B, __B, __B, __B,           __B,            __B,            __B,
+   __B, __B, __B, BRIGHT_BLUE,   BRIGHT_BLUE,    __B,            __B,
+   __B, __B, __B, __B,           BRIGHT_GREEN,   BRIGHT_BLUE,
+   __B, __B, __B, __B,           __B,            __B,            __B,
+   __B, __B, __B, __B,
+   __B,
+
+   __B, __B, __B, __B,           __B,            __B,            __B,
+   __B, __B, __B, __B,           __B,            __B,            __B,
+        __B, __B, __B,           BRIGHT_GREEN,   __B,            __B,
+   __B, __B, __B, __B,           __B,            __B,            __B,
+   __B, __B, __B, __B,
+   __B) // }}}2
+)
 // }}}1
 
 // ---- Kaleidoscope internal {{{1
@@ -570,6 +709,7 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
 
   // The Colormap effect makes it possible to set up per-layer colormaps
   ColormapEffect,
+  DefaultColormap,
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
@@ -681,6 +821,7 @@ void setup() {
   // maps for. To make things simple, we set it to eight layers, which is how
   // many editable layers we have (see above).
   ColormapEffect.max_layers(8);
+  DefaultColormap.setup();
 
   // For Dynamic Macros, we need to reserve storage space for the editable
   // macros. A kilobyte is a reasonable default.
