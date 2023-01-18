@@ -53,9 +53,9 @@ ${BOARDS}: %: %@build
 				  LOCAL_CFLAGS="-DKALEIDOSCOPE_FIRMWARE_VERSION=\\\"${EMBEDDED_VERSION}\\\""
 	install -d output/$*
 	if [ -e ${BUILDDIR}/*-latest.bin ]; then \
-		cp -L ${BUILDDIR}/*-latest.bin output/$*/default.bin; \
+		cp -L ${BUILDDIR}/*-latest.bin output/$*/$(VERSION).bin; \
 	else \
-		cp -L ${BUILDDIR}/*-latest.hex output/$*/default.hex; \
+		cp -L ${BUILDDIR}/*-latest.hex output/$*/$(VERSION).hex; \
 	fi
 	rm -rf "${BUILDDIR}"
 	echo
