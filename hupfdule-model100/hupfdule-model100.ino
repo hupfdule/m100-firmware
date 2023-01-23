@@ -885,6 +885,16 @@ void setup() {
   // firmware starts with LED effects off. This avoids over-taxing devices that
   // don't have a lot of power to share with USB devices
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
+
+// ---- Qukeys config
+//  Qukeys.setHoldTimeout(1000);
+//  Qukeys.setOverlapThreshold(50);
+//  Qukeys.setMinimumHoldTime(100);
+//  Qukeys.setMinimumPriorInterval(80);
+  // Disable tap repeat as it reduces my ability to enter the same
+  // character twice.
+  Qukeys.setMaxIntervalForTapRepeat(0);
+
 } // }}}1
 
 /**
