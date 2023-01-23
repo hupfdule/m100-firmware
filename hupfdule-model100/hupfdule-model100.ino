@@ -125,6 +125,7 @@ enum {
   MACRO_ANY,
   MACRO_UNDEAD_CARET,
   MACRO_UNDEAD_BACKTICK,
+  MACRO_QU,
 };
 
 /**
@@ -182,6 +183,19 @@ static const macro_t *undeadBacktickMacro(KeyEvent &event) {
 }
 
 /**
+ * Press the Q key and directly afterwards the U key as this is the most
+ * used combination in written texts.
+ */
+static const macro_t *quMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(DE_Q),
+                 T(DE_U)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
  * macroAction dispatches keymap events that are tied to a macro
  * to that macro. It takes two uint8_t parameters.
  *
@@ -209,6 +223,10 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
   case MACRO_UNDEAD_BACKTICK:
     return undeadBacktickMacro(event);
+    break;
+
+  case MACRO_QU:
+    return quMacro(event);
     break;
   }
 
@@ -364,18 +382,18 @@ KEYMAPS(
 
 
   [UMLAUT] =  KEYMAP_STACKED // {{{2
-  (___, ___, ___, ___,            ___,            ___,            ___,
-   ___, ___, ___, Key_DE_UUmlaut, Key_DE_AUmlaut, ___,            ___,
-   ___, ___, ___, ___,            Key_DE_J,       Key_DE_OUmlaut,
-   ___, ___, ___, ___,            ___,            ___,            ___,
-   ___, ___, ___, ___,
+  (___, ___,         ___, ___,            ___,            ___,                           ___,
+   ___, M(MACRO_QU), ___, Key_DE_UUmlaut, Key_DE_AUmlaut, ___,                           ___,
+   ___, ___,         ___, ___,            Key_DE_J,       Key_DE_OUmlaut,
+   ___, ___,         ___, ___,            ___,            ___,                           ___,
+   ___, ___,         ___, ___,
    ___,
 
-   ___, ___, ___, ___, ___,           ___, ___,
-   ___, ___, ___, ___, ___,           ___, ___,
-        ___, ___, ___, Key_DE_Eszett, ___, ___,
-   ___, ___, ___, ___, ___,           ___, ___,
-   ___, ___, ___, ___,
+   ___, ___,         ___, ___,            ___,            ___,                           ___,
+   ___, ___,         ___, ___,            ___,            ___,                           ___,
+        ___,         ___, ___,            Key_DE_Eszett,  ___,                           ___,
+   ___, ___,         ___, ___,            ___,            ___,                           ___,
+   ___, ___,         ___, ___,
    ___) // }}}2
 ) // KEYMAPS(
 
