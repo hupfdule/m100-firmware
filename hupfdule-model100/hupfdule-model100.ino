@@ -58,6 +58,9 @@
 // Support for shared palettes for other plugins, like Colormap below
 #include "Kaleidoscope-LED-Palette-Theme.h"
 
+// Support for an LED mode that prints the keys you press in letters 4px high
+#include "Kaleidoscope-LED-ActiveModColor.h"
+
 // Support for an LED mode that lets one configure per-layer color maps
 #include "Kaleidoscope-Colormap.h"
 
@@ -812,6 +815,9 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
 
   // Enables controlling (and saving) the brightness of the LEDs via Focus.
   LEDBrightnessConfig,
+
+  // Enable ActiveModColorEffect
+  ActiveModColorEffect,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
