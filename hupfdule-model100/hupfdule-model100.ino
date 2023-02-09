@@ -378,11 +378,11 @@ KEYMAPS(
 
 
   [FUNCTION] =  KEYMAP_STACKED // {{{2
-  (___,      Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_LEDEffectNext,
-   Key_Tab,  LCTRL(Key_DE_W), Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, LALT(Key_DE_F), Key_Spacebar,
-   ___,      LCTRL(Key_DE_S), Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    LALT(Key_DE_B),
-   ___,      Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete,     Key_Enter,
-   ___, Key_Delete, ___, ___,
+  (___,             Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_LEDEffectNext,
+   Key_Tab,         LCTRL(Key_DE_W), Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, LALT(Key_DE_F), Key_Spacebar,
+   LCTRL(Key_DE_R), LCTRL(Key_DE_S), Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    LALT(Key_DE_B),
+   ___,             Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete,     Key_Enter,
+   ___,             Key_Delete,      ___,              ___,
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
