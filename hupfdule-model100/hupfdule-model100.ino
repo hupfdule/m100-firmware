@@ -395,7 +395,7 @@ KEYMAPS(
 
   [SYMBOL] = KEYMAP_STACKED // {{{2
   (___, ___,                    ___,                    ___,                     ___,                      ___,                      ___,
-   ___, ___,                    Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      M(MACRO_UNDEAD_CARET),    ___,
+   ___, M(MACRO_UNDEAD_CARET),  Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      Key_DE_DoubleQuote,       ___,
    ___, Key_DE_Backslash,       Key_DE_Slash,           Key_DE_LeftCurlyBracket, Key_DE_RightCurlyBracket, Key_DE_Asterisk,
    ___, Key_DE_Pound,           Key_DE_Tilde,           Key_DE_Pipe,             Key_DE_Dollar,            M(MACRO_UNDEAD_BACKTICK), ___,
    ___, ___, ___, ___,
@@ -554,7 +554,7 @@ COLORMAPS(
 
   [SYMBOL] = COLORMAP_STACKED // {{{2
   (__B, __B,  __B,  __B,  __B,  __B,  __B,
-   __B, __B,  BLUE, BLUE, BLUE, BLUE, __B,
+   __B, BLUE, BLUE, BLUE, BLUE, BLUE, __B,
    __B, BLUE, BLUE, BLUE, BLUE, BLUE,
    __B, BLUE, BLUE, BLUE, BLUE, BLUE, __B,
    __B, __B,  __B,  __B,
