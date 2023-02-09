@@ -537,19 +537,19 @@ COLORMAPS(
 
 
   [FUNCTION] =  COLORMAP_STACKED // {{{2
-  (__B,       __B,     __B,          __B,          __B,          __B, __B,
-   __B,       __B,     BRIGHT_GREEN, BRIGHT_GREEN, BRIGHT_GREEN, __B, __B,
-   __B,       __B,     GREEN,        BRIGHT_GREEN, GREEN,        __B,
-   __B,       __B,     __B,          BLUE,         BLUE,         RED, __B,
-   __B,       RED,     __B,          __B,
+  (__B,      DARK_GRAY, DARK_GRAY,    DARK_GRAY,    DARK_GRAY,    DARK_GRAY,  __B,
+   __B,      YELLOW,    BRIGHT_GREEN, BRIGHT_GREEN, BRIGHT_GREEN, YELLOW,     __B,
+   YELLOW,   YELLOW,    GREEN,        BRIGHT_GREEN, GREEN,        YELLOW,
+   __B,      __B,       __B,          BLUE,         BLUE,         RED,        __B,
+   __B,      RED,       __B,          __B,
    __B,
 
-   MAGENTA,   __B,     __B,          __B,          __B,          __B, __B,
-   MAGENTA,   MAGENTA, __B,          __B,          __B,          __B, __B,
-              BLUE,    BLUE,         BLUE,         BLUE,         __B, __B,
-   __B,       RED,     MAGENTA,      MAGENTA,      MAGENTA,      __B, __B,
-   __B,       __B,     __B,          __B,
-   __B),      // }}}2
+   MAGENTA,  DARK_GRAY, DARK_GRAY,    DARK_GRAY,    DARK_GRAY,    DARK_GRAY,  DARK_GRAY,
+   MAGENTA,  MAGENTA,   __B,          __B,          __B,          __B,        DARK_GRAY,
+             BLUE,      BLUE,         BLUE,         BLUE,         LIGHT_GRAY, __B,
+   __B,      RED,       MAGENTA,      MAGENTA,      MAGENTA,      LIGHT_GRAY, __B,
+   __B,      __B,       __B,          __B,
+   __B),     // }}}2
 
 
   [SYMBOL] = COLORMAP_STACKED // {{{2
