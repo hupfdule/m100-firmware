@@ -588,18 +588,18 @@ COLORMAPS(
 
 
   [UMLAUT] = COLORMAP_STACKED // {{{2
-  (__B, __B, __B,          __B,         __B,          __B,         __B,
-   __B, __B, __B,          BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
-   __B, __B, BRIGHT_GREEN, __B,         BRIGHT_GREEN, BRIGHT_BLUE,
-   __B, __B, __B,          __B,         __B,          __B,         __B,
-   __B, __B, __B,          __B,
+  (__B, __B,   __B,          __B,         __B,          __B,         __B,
+   __B, GREEN, __B,          BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
+   __B, __B,   BRIGHT_GREEN, __B,         BRIGHT_GREEN, BRIGHT_BLUE,
+   __B, __B,   __B,          __B,         GREEN,        GREEN,       __B,
+   __B, __B,   __B,          __B,
    __B,
 
-   __B, __B, __B,          __B,         __B,          __B,         __B,
-   __B, __B, __B,          __B,         __B,          __B,         __B,
-        __B, __B,          __B,         BRIGHT_GREEN, __B,         __B,
-   __B, __B, __B,          __B,         __B,          __B,         __B,
-   __B, __B, __B,          __B,
+   __B, __B,   __B,          __B,         __B,          __B,         __B,
+   __B, __B,   __B,          __B,         __B,          __B,         __B,
+        __B,   __B,          __B,         BRIGHT_GREEN, __B,         __B,
+   __B, __B,   __B,          __B,         __B,          __B,         __B,
+   __B, __B,   __B,          __B,
    __B) // }}}2
 )
 // }}}1
