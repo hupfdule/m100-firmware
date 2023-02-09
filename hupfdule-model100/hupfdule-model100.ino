@@ -130,6 +130,7 @@ enum {
   MACRO_UNDEAD_BACKTICK,
   MACRO_QU,
   MACRO_UNDERSCORE_SEPARATOR,
+  MACRO_DIR_UP,
 };
 
 /**
@@ -220,6 +221,20 @@ static const macro_t *underscoreSeparatorMacro(KeyEvent &event) {
 }
 
 /**
+ * Write ../ which is often used in the shell to specify the parent
+ * directory.
+ */
+static const macro_t *dirUpMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(DE_Period),
+                 T(DE_Period),
+                 T(DE_Slash)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
  * macroAction dispatches keymap events that are tied to a macro
  * to that macro. It takes two uint8_t parameters.
  *
@@ -255,6 +270,10 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
   case MACRO_UNDERSCORE_SEPARATOR:
     return underscoreSeparatorMacro(event);
+    break;
+
+  case MACRO_DIR_UP:
+    return dirUpMacro(event);
     break;
   }
 
@@ -417,10 +436,10 @@ KEYMAPS(
    ___, ___,         ___,            ___,
    ___,
 
-   ___, ___,         ___,            ___,            ___,            ___,                           ___,
-   ___, ___,         ___,            ___,            ___,            ___,                           ___,
-        ___,         ___,            ___,            Key_DE_Eszett,  ___,                           ___,
-   ___, ___,         ___,            ___,            ___,            ___,                           ___,
+   ___, ___,         ___,            ___,            ___,             ___,                           ___,
+   ___, ___,         ___,            ___,            ___,             ___,                           ___,
+        ___,         ___,            ___,            Key_DE_Eszett,   ___,                           ___,
+   ___, ___,         ___,            ___,            ___,             ___,                           ___,
    ___, ___,         ___,            ___,
    ___) // }}}2
 ) // KEYMAPS(
