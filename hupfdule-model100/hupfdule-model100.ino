@@ -192,9 +192,12 @@ static const macro_t *undeadBacktickMacro(KeyEvent &event) {
  */
 static const macro_t *quMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
-    return MACRO(T(DE_Q),
-                 T(DE_U)
-           );
+    Macros.tap(Key_DE_Q);
+    // Cancel a OneShot modifier to be able to write “Qu”.
+    // See  https://community.keyboard.io/t/macro-that-respects-one-shot-modifier-keys/6163
+    OneShot.cancel();
+    Macros.tap(Key_DE_U);
+    return MACRO_NONE;
   }
   return MACRO_NONE;
 }
