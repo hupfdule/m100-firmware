@@ -410,18 +410,18 @@ KEYMAPS(
 
 
   [UMLAUT] =  KEYMAP_STACKED // {{{2
-  (___, ___,         ___, ___,            ___,            ___,                           ___,
-   ___, M(MACRO_QU), ___, Key_DE_UUmlaut, Key_DE_AUmlaut, ___,                           ___,
-   ___, ___,         ___, ___,            Key_DE_J,       Key_DE_OUmlaut,
-   ___, ___,         ___, ___,            ___,            M(MACRO_UNDERSCORE_SEPARATOR), ___,
-   ___, ___,         ___, ___,
+  (___, ___,         ___,            ___,            ___,             ___,                           ___,
+   ___, M(MACRO_QU), ___,            Key_DE_UUmlaut, Key_DE_AUmlaut,  ___,                           ___,
+   ___, ___,         Key_DE_Eszett,  ___,            Key_DE_J,        Key_DE_OUmlaut,
+   ___, ___,         ___,            ___,            M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
+   ___, ___,         ___,            ___,
    ___,
 
-   ___, ___,         ___, ___,            ___,            ___,                           ___,
-   ___, ___,         ___, ___,            ___,            ___,                           ___,
-        ___,         ___, ___,            Key_DE_Eszett,  ___,                           ___,
-   ___, ___,         ___, ___,            ___,            ___,                           ___,
-   ___, ___,         ___, ___,
+   ___, ___,         ___,            ___,            ___,            ___,                           ___,
+   ___, ___,         ___,            ___,            ___,            ___,                           ___,
+        ___,         ___,            ___,            Key_DE_Eszett,  ___,                           ___,
+   ___, ___,         ___,            ___,            ___,            ___,                           ___,
+   ___, ___,         ___,            ___,
    ___) // }}}2
 ) // KEYMAPS(
 
@@ -569,18 +569,18 @@ COLORMAPS(
 
 
   [UMLAUT] = COLORMAP_STACKED // {{{2
-  (__B, __B, __B, __B,           __B,            __B,            __B,
-   __B, __B, __B, BRIGHT_BLUE,   BRIGHT_BLUE,    __B,            __B,
-   __B, __B, __B, __B,           BRIGHT_GREEN,   BRIGHT_BLUE,
-   __B, __B, __B, __B,           __B,            __B,            __B,
-   __B, __B, __B, __B,
+  (__B, __B, __B,          __B,         __B,          __B,         __B,
+   __B, __B, __B,          BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
+   __B, __B, BRIGHT_GREEN, __B,         BRIGHT_GREEN, BRIGHT_BLUE,
+   __B, __B, __B,          __B,         __B,          __B,         __B,
+   __B, __B, __B,          __B,
    __B,
 
-   __B, __B, __B, __B,           __B,            __B,            __B,
-   __B, __B, __B, __B,           __B,            __B,            __B,
-        __B, __B, __B,           BRIGHT_GREEN,   __B,            __B,
-   __B, __B, __B, __B,           __B,            __B,            __B,
-   __B, __B, __B, __B,
+   __B, __B, __B,          __B,         __B,          __B,         __B,
+   __B, __B, __B,          __B,         __B,          __B,         __B,
+        __B, __B,          __B,         BRIGHT_GREEN, __B,         __B,
+   __B, __B, __B,          __B,         __B,          __B,         __B,
+   __B, __B, __B,          __B,
    __B) // }}}2
 )
 // }}}1
