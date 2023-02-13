@@ -61,6 +61,9 @@
 // Support for an LED mode that prints the keys you press in letters 4px high
 #include "Kaleidoscope-LED-ActiveModColor.h"
 
+// Support for assingnign different chars for shifted and unshifted positions
+#include "Kaleidoscope-CharShift.h"
+
 // Support for an LED mode that lets one configure per-layer color maps
 #include "Kaleidoscope-Colormap.h"
 
@@ -355,14 +358,14 @@ KEYMAPS(
   (___,                   Key_1,  Key_2,         Key_3,       Key_4,              Key_5,       ___,
    Key_PageUp,            Key_Q,  Key_T,         Key_U,       Key_A,              Key_F,       Key_Tab,
    LT(NUMPAD, CapsLock),  Key_C,  Key_D,         Key_E,       Key_I,              Key_O,
-   Key_PageDown,          Key_X,  Key_V,         Key_Comma,   LT(SYMBOL, Period), Key_Minus,   Key_Escape,
+   Key_PageDown,          Key_X,  Key_V,         CS(0),       CS(1),              Key_Minus,   Key_Escape,
    OSM(LeftShift),  Key_Backspace,   Key_LeftAlt,   OSM(LeftControl),
    ShiftToLayer(FUNCTION),
 
    LockLayer(SYMBOL),     Key_6,  Key_7,         Key_8,       Key_9,              Key_0,       LockLayer(NUMPAD),
    Key_Enter,             Key_P,  Key_H,         Key_L,       Key_M,              Key_W,       Key_Eszett,
                           Key_B,  Key_N,         Key_R,       Key_S,              Key_G,       Key_J,
-   Key_RightAlt,          Key_Y,  LT(SYMBOL, Z), Key_K,       Key_Backslash,      Key_Slash,   OSL(UMLAUT),
+   Key_RightAlt,          Key_Y,  Key_Z,         Key_K,       Key_Backslash,      Key_Slash,   OSL(UMLAUT),
    OSM(RightControl), Key_LeftGui,    Key_Spacebar,  OSM(RightShift),
    ShiftToLayer(FUNCTION)), // }}}2
 
@@ -844,6 +847,9 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // Enable ActiveModColorEffect
   ActiveModColorEffect,
 
+  // Allow assigning different chars to shifted and unshifted positions of a key
+  CharShift,
+
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
   GeminiPR);
@@ -917,7 +923,11 @@ void setup() {
   // don't have a lot of power to share with USB devices
   DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&ColormapEffect);
 
-// ---- Qukeys config
+  // ---- Qukeys config
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3,  4), ShiftToLayer(SYMBOL)),    // ./Layer-shift to Symbol
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 11), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
+  )
 //  Qukeys.setHoldTimeout(1000);
 //  Qukeys.setOverlapThreshold(50);
 //  Qukeys.setMinimumHoldTime(100);
@@ -926,6 +936,11 @@ void setup() {
   // character twice.
   Qukeys.setMaxIntervalForTapRepeat(0);
 
+  // ---- CharShift config
+  CS_KEYS(
+    kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, Key_Semicolon),               // CS(0)   , → ;
+    kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_Semicolon)),      // CS(1)   . → :
+  );
 } // }}}1
 
 /**
