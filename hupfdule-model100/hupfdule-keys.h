@@ -1,0 +1,26 @@
+/* Base layer */
+#define Key_Tilde               LSHIFT(Key_Backtick)
+#define Key_ExclamationMark     LSHIFT(Key_1)
+#define Key_At                  LSHIFT(Key_2)
+#define Key_Pound               LSHIFT(Key_3)
+#define Key_Dollar              LSHIFT(Key_4)
+#define Key_Percent             LSHIFT(Key_5)
+#define Key_Caret               LSHIFT(Key_6)
+#define Key_Ampersand           LSHIFT(Key_7)
+#define Key_Asterisk            LSHIFT(Key_8)
+#define Key_LeftParentheses     LSHIFT(Key_9)
+#define Key_RightParentheses    LSHIFT(Key_0)
+#define Key_Underscore          LSHIFT(Key_Minus)
+#define Key_Plus                LSHIFT(Key_Equals)
+#define Key_DoubleQuote         LSHIFT(Key_Quote)
+#define Key_LessThan            LSHIFT(Key_Comma)
+#define Key_GreaterThan         LSHIFT(Key_Period)
+#define Key_QuestionMark        LSHIFT(Key_Slash)
+#define Key_Colon               LSHIFT(Key_Semicolon)
+#define Key_Eszett              RALT(Key_S)
+#define Key_AUmlaut             RALT(Key_Q)
+#define Key_OUmlaut             RALT(Key_P)
+#define Key_UUmlaut             RALT(Key_Y)
+
+/* Aliases */
+#define Key_SingleQuote         Key_Quote

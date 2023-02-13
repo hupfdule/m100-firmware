@@ -107,6 +107,9 @@
 // Support for symbolic names for a german QWERTZ layout
 #include "QWERTZ_T1.h"
 
+// Support for additional symbolic names
+#include "hupfdule-keys.h"
+
 // }}}1
 
 // ---- Macros {{{1
@@ -165,7 +168,7 @@ static void anyKeyMacro(KeyEvent &event) {
  */
 static const macro_t *undeadCaretMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
-    return MACRO(T(DE_Caret),
+    return MACRO(T(Caret),
                  T(Spacebar)
            );
   }
@@ -179,7 +182,7 @@ static const macro_t *undeadCaretMacro(KeyEvent &event) {
 static const macro_t *undeadBacktickMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
     return MACRO(D(LeftShift),
-                 T(DE_Backtick),
+                 T(Backtick),
                  U(LeftShift),
                  T(Spacebar)
            );
@@ -193,11 +196,11 @@ static const macro_t *undeadBacktickMacro(KeyEvent &event) {
  */
 static const macro_t *quMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
-    Macros.tap(Key_DE_Q);
+    Macros.tap(Key_Q);
     // Cancel a OneShot modifier to be able to write “Qu”.
     // See  https://community.keyboard.io/t/macro-that-respects-one-shot-modifier-keys/6163
     OneShot.cancel();
-    Macros.tap(Key_DE_U);
+    Macros.tap(Key_U);
     return MACRO_NONE;
   }
   return MACRO_NONE;
@@ -209,11 +212,11 @@ static const macro_t *quMacro(KeyEvent &event) {
 static const macro_t *underscoreSeparatorMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
     return MACRO(D(LeftShift),
-                 T(DE_Minus),
+                 T(Minus),
                  U(LeftShift),
-                 T(DE_Minus),
+                 T(Minus),
                  D(LeftShift),
-                 T(DE_Minus),
+                 T(Minus),
                  U(LeftShift)
            );
   }
@@ -226,9 +229,9 @@ static const macro_t *underscoreSeparatorMacro(KeyEvent &event) {
  */
 static const macro_t *dirUpMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
-    return MACRO(T(DE_Period),
-                 T(DE_Period),
-                 T(DE_Slash)
+    return MACRO(T(Period),
+                 T(Period),
+                 T(Slash)
            );
   }
   return MACRO_NONE;
@@ -349,17 +352,17 @@ enum {
 KEYMAPS(
 
   [BONE] = KEYMAP_STACKED  // {{{2
-  (___,                   Key_DE_1,  Key_DE_2,         Key_DE_3,       Key_DE_4,              Key_DE_5,       ___,
-   Key_PageUp,            Key_DE_Q,  Key_DE_T,         Key_DE_U,       Key_A,                 Key_DE_F,       Key_Tab,
-   LT(NUMPAD, CapsLock),  Key_DE_C,  Key_DE_D,         Key_DE_E,       Key_DE_I,              Key_DE_O,
-   Key_PageDown,          Key_DE_X,  Key_DE_V,         Key_DE_Comma,   LT(SYMBOL, DE_Period), Key_DE_Minus,   Key_Escape,
+  (___,                   Key_1,  Key_2,         Key_3,       Key_4,              Key_5,       ___,
+   Key_PageUp,            Key_Q,  Key_T,         Key_U,       Key_A,              Key_F,       Key_Tab,
+   LT(NUMPAD, CapsLock),  Key_C,  Key_D,         Key_E,       Key_I,              Key_O,
+   Key_PageDown,          Key_X,  Key_V,         Key_Comma,   LT(SYMBOL, Period), Key_Minus,   Key_Escape,
    OSM(LeftShift),  Key_Backspace,   Key_LeftAlt,   OSM(LeftControl),
    ShiftToLayer(FUNCTION),
 
-   LockLayer(SYMBOL),     Key_DE_6,  Key_DE_7,         Key_DE_8,       Key_DE_9,              Key_DE_0,       LockLayer(NUMPAD),
-   Key_Enter,             Key_DE_P,  Key_DE_H,         Key_DE_L,       Key_DE_M,              Key_DE_W,       Key_DE_Eszett,
-                          Key_DE_B,  Key_DE_N,         Key_DE_R,       Key_DE_S,              Key_DE_G,       Key_DE_J,
-   Key_RightAlt,          Key_DE_Y,  LT(SYMBOL, DE_Z), Key_DE_K,       Key_DE_Backslash,      Key_DE_Slash,   OSL(UMLAUT),
+   LockLayer(SYMBOL),     Key_6,  Key_7,         Key_8,       Key_9,              Key_0,       LockLayer(NUMPAD),
+   Key_Enter,             Key_P,  Key_H,         Key_L,       Key_M,              Key_W,       Key_Eszett,
+                          Key_B,  Key_N,         Key_R,       Key_S,              Key_G,       Key_J,
+   Key_RightAlt,          Key_Y,  LT(SYMBOL, Z), Key_K,       Key_Backslash,      Key_Slash,   OSL(UMLAUT),
    OSM(RightControl), Key_LeftGui,    Key_Spacebar,  OSM(RightShift),
    ShiftToLayer(FUNCTION)), // }}}2
 
@@ -372,10 +375,10 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   ___, Key_6, Key_7, Key_8,     Key_9,      Key_0,            ___,
-   ___, Key_Z, Key_U, Key_I,     Key_O,      Key_P,            Key_DE_Equals,
-        Key_H, Key_J, Key_K,     Key_L,      Key_DE_Semicolon, Key_DE_Quote,
-   ___, Key_N, Key_M, Key_Comma, Key_Period, Key_DE_Slash,     Key_DE_Minus,
+   ___, Key_6, Key_7, Key_8,     Key_9,      Key_0,         ___,
+   ___, Key_Z, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,
+        Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,
+   ___, Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,
    ___, ___, ___, ___,
    ___), // }}}2
 
@@ -388,59 +391,59 @@ KEYMAPS(
    ___, ___, ___, ___,
    ___,
 
-   M(MACRO_VERSION_INFO),  ___,                   ___,   Key_DE_Equals, ___,   Key_KeypadSubtract, ___,
-   ___,                    LSHIFT(Key_DE_Period), Key_7, Key_8,         Key_9, Key_KeypadAdd,      ___,
-                           Key_DE_Period,         Key_4, Key_5,         Key_6, Key_KeypadDivide,   Key_DE_Equals,
-   ___,                    Key_DE_Comma,          Key_1, Key_2,         Key_3, Key_KeypadMultiply, Key_Enter,
+   M(MACRO_VERSION_INFO),  ___,                ___,   Key_Equals,    ___,   Key_KeypadSubtract, ___,
+   ___,                    Key_Colon,          Key_7, Key_8,         Key_9, Key_KeypadAdd,      ___,
+                           Key_Period,         Key_4, Key_5,         Key_6, Key_KeypadDivide,   Key_Equals,
+   ___,                    Key_Comma,          Key_1, Key_2,         Key_3, Key_KeypadMultiply, Key_Enter,
    ___, ___, Key_0, Key_Enter,
    ___), // }}}2
 
 
   [FUNCTION] =  KEYMAP_STACKED // {{{2
-  (___,             Key_F1,          Key_F2,           Key_F3,            Key_F4,           Key_F5,         Key_LEDEffectNext,
-   Key_Tab,         LCTRL(Key_DE_W), Key_mouseScrollL, Key_mouseScrollUp, Key_mouseScrollR, LALT(Key_DE_F), Key_Spacebar,
-   LCTRL(Key_DE_R), LCTRL(Key_DE_S), Key_mouseBtnR,    Key_mouseScrollDn, Key_mouseBtnL,    LALT(Key_DE_B),
-   ___,             Key_PrintScreen, Key_Insert,       Key_Home,          Key_End,          Key_Delete,     Key_Enter,
-   ___,             Key_Delete,      ___,              ___,
+  (___,                        Key_F1,                 Key_F2,                   Key_F3,                   Key_F4,           Key_F5,        Key_LEDEffectNext,
+   Key_Tab,                    LCTRL(Key_W),           Key_mouseScrollL,         Key_mouseScrollUp,        Key_mouseScrollR, LALT(Key_F),   Key_Spacebar,
+   LCTRL(Key_R),               LCTRL(Key_S),           Key_mouseBtnR,            Key_mouseScrollDn,        Key_mouseBtnL,    LALT(Key_B),
+   ___,                        Key_PrintScreen,        Key_Insert,               Key_Home,                 Key_End,          Key_Delete,    Key_Enter,
+   ___,                        Key_Delete,             ___,                      ___,
    ___,
 
-   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,          Key_F10,          Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_Escape,               Key_Tab,                  ___,             ___,              Key_F12,
-                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  Key_DE_Slash,     ___,
-   Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,   Key_DE_Backslash, ___,
-   ___, ___, Key_Enter, ___,
+   Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,           Key_F10,       Key_F11,
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_Escape,               Key_Tab,                  ___,              ___,           Key_F12,
+                               Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,   Key_Slash,     ___,
+   Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,    Key_Backslash, ___,
+   ___,                        ___,                    Key_Enter,                ___,
    ___), // }}}2
 
 
   [SYMBOL] = KEYMAP_STACKED // {{{2
-  (___, ___,                    ___,                    ___,                     ___,                      ___,                      ___,
-   ___, M(MACRO_UNDEAD_CARET),  Key_DE_Underscore,      Key_DE_LeftBracket,      Key_DE_RightBracket,      Key_DE_DoubleQuote,       ___,
-   ___, Key_DE_Backslash,       Key_DE_Slash,           Key_DE_LeftCurlyBracket, Key_DE_RightCurlyBracket, Key_DE_Asterisk,
-   ___, Key_DE_Pound,           Key_DE_Tilde,           Key_DE_Pipe,             Key_DE_Dollar,            M(MACRO_UNDEAD_BACKTICK), ___,
-   ___, ___, ___, ___,
+  (___, ___,                 ___,                 ___,                  ___,                   ___,             ___,
+   ___, Key_Caret,           Key_Underscore,      Key_LeftBracket,      Key_RightBracket,      Key_DoubleQuote, ___,
+   ___, Key_Backslash,       Key_Slash,           Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Asterisk,
+   ___, Key_Pound,           Key_Tilde,           Key_Pipe,             Key_Dollar,            Key_Backtick,    ___,
+   ___, ___,                 ___,                 ___,
    ___,
 
-   ___, ___,                    ___,                    ___,                     ___,                      ___,              ___,
-   ___, Key_DE_ExclamationMark, Key_DE_LessThan,        Key_DE_GreaterThan,      Key_DE_Equals,            Key_DE_Percent,   ___,
-        Key_DE_QuestionMark,    Key_DE_LeftParentheses, Key_DE_RightParentheses, Key_DE_Minus,             Key_DE_Semicolon, Key_DE_Colon,
-   ___, Key_DE_Plus,            Key_DE_DoubleQuote,     Key_DE_SingleQuote,      Key_DE_At,                Key_DE_Ampersand, ___,
-   ___, ___, ___, ___,
+   ___, ___,                 ___,                 ___,                  ___,                   ___,             ___,
+   ___, Key_ExclamationMark, Key_LessThan,        Key_GreaterThan,      Key_Equals,            Key_Percent,     ___,
+        Key_QuestionMark,    Key_LeftParentheses, Key_RightParentheses, Key_Minus,             Key_Semicolon,   Key_Colon,
+   ___, Key_Plus,            Key_DoubleQuote,     Key_SingleQuote,      Key_At,                Key_Ampersand,   ___,
+   ___, ___,                 ___,                 ___,
    ___), // }}}2
 
 
   [UMLAUT] =  KEYMAP_STACKED // {{{2
-  (___, ___,         ___,            ___,            ___,             ___,                           ___,
-   ___, M(MACRO_QU), ___,            Key_DE_UUmlaut, Key_DE_AUmlaut,  ___,                           ___,
-   ___, ___,         Key_DE_Eszett,  ___,            Key_DE_J,        Key_DE_OUmlaut,
-   ___, ___,         ___,            ___,            M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
-   ___, ___,         ___,            ___,
+  (___, ___,         ___,        ___,         ___,             ___,                           ___,
+   ___, M(MACRO_QU), ___,        Key_UUmlaut, Key_AUmlaut,     ___,                           ___,
+   ___, ___,         Key_Eszett, ___,         Key_J,           Key_OUmlaut,
+   ___, ___,         ___,        ___,         M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
+   ___, ___,         ___,        ___,
    ___,
 
-   ___, ___,         ___,            ___,            ___,             ___,                           ___,
-   ___, ___,         ___,            ___,            ___,             ___,                           ___,
-        ___,         ___,            ___,            Key_DE_Eszett,   ___,                           ___,
-   ___, ___,         ___,            ___,            ___,             ___,                           ___,
-   ___, ___,         ___,            ___,
+   ___, ___,         ___,        ___,         ___,             ___,                           ___,
+   ___, ___,         ___,        ___,         ___,             ___,                           ___,
+        ___,         ___,        ___,         Key_Eszett,      ___,                           ___,
+   ___, ___,         ___,        ___,         ___,             ___,                           ___,
+   ___, ___,         ___,        ___,
    ___) // }}}2
 ) // KEYMAPS(
 
