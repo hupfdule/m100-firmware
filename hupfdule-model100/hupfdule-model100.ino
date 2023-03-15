@@ -137,6 +137,7 @@ enum {
   MACRO_QU,
   MACRO_UNDERSCORE_SEPARATOR,
   MACRO_DIR_UP,
+  MACRO_APOSTROPHE_T,
 };
 
 /**
@@ -241,6 +242,20 @@ static const macro_t *dirUpMacro(KeyEvent &event) {
 }
 
 /**
+ * Enter “’t” as this is a common suffix in english, e.g. in “don’t”.
+ */
+static const macro_t *apostropeTMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(CapsLock),
+                 T(GreaterThan),
+                 T(SingleQuote),
+                 T(T)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
  * macroAction dispatches keymap events that are tied to a macro
  * to that macro. It takes two uint8_t parameters.
  *
@@ -280,6 +295,10 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
   case MACRO_DIR_UP:
     return dirUpMacro(event);
+    break;
+
+  case MACRO_APOSTROPHE_T:
+    return apostropeTMacro(event);
     break;
   }
 
@@ -435,18 +454,18 @@ KEYMAPS(
 
 
   [UMLAUT] =  KEYMAP_STACKED // {{{2
-  (___, ___,         ___,        ___,         ___,             ___,                           ___,
-   ___, M(MACRO_QU), ___,        Key_UUmlaut, Key_AUmlaut,     ___,                           ___,
-   ___, ___,         Key_Eszett, ___,         Key_J,           Key_OUmlaut,
-   ___, ___,         ___,        ___,         M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
-   ___, ___,         ___,        ___,
+  (___, ___,         ___,                   ___,         ___,             ___,                           ___,
+   ___, M(MACRO_QU), M(MACRO_APOSTROPHE_T), Key_UUmlaut, Key_AUmlaut,     ___,                           ___,
+   ___, ___,         Key_Eszett,            ___,         Key_J,           Key_OUmlaut,
+   ___, ___,         ___,                   ___,         M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
+   ___, ___,         ___,                   ___,
    ___,
 
-   ___, ___,         ___,        ___,         ___,             ___,                           ___,
-   ___, ___,         ___,        ___,         ___,             ___,                           ___,
-        ___,         ___,        ___,         Key_Eszett,      ___,                           ___,
-   ___, ___,         ___,        ___,         ___,             ___,                           ___,
-   ___, ___,         ___,        ___,
+   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
+   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
+        ___,         ___,                   ___,         Key_Eszett,      ___,                           ___,
+   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
+   ___, ___,         ___,                   ___,
    ___) // }}}2
 ) // KEYMAPS(
 
@@ -595,7 +614,7 @@ COLORMAPS(
 
   [UMLAUT] = COLORMAP_STACKED // {{{2
   (__B, __B,   __B,          __B,         __B,          __B,         __B,
-   __B, GREEN, __B,          BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
+   __B, GREEN, GREEN,        BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
    __B, __B,   BRIGHT_GREEN, __B,         BRIGHT_GREEN, BRIGHT_BLUE,
    __B, __B,   __B,          __B,         GREEN,        GREEN,       __B,
    __B, __B,   __B,          __B,
