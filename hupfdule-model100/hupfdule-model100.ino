@@ -1024,7 +1024,9 @@ void setup() {
 
   // ---- Chords config
   CHORDS(
-    CHORD(Key_N, Key_R, Key_S), LockLayer(MOUSE),
+    CHORD(Key_K, Key_Backslash),    LockLayer  (SYMBOL),  // Toggle symbol layer on
+    CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),  // Toggle symbol layer off (same physical keys as for toggling on)
+    CHORD(Key_N, Key_R, Key_S),     LockLayer  (MOUSE),   // Switch to mouse layer
   )
 
 } // }}}1
