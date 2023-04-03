@@ -107,6 +107,9 @@
 // Support for the GeminiPR Stenography protocol
 #include "Kaleidoscope-Steno.h"
 
+// Support for the Chord plugin
+#include <Kaleidoscope-Chord.h>
+
 // Support for symbolic names for a german QWERTZ layout
 #include "QWERTZ_T1.h"
 
@@ -806,6 +809,10 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
   GeminiPR,
 
+  // Enable the Chord plugin to produce different keys when pressing some
+  // keys simultaneously.
+  Chord,
+
   // }}}2
   // ----------------------------------------------------------------------
   // LED mode plugins  {{{2
@@ -981,6 +988,11 @@ void setup() {
     kaleidoscope::plugin::CharShift::KeyPair(Key_Comma, Key_Semicolon),               // CS(0)   , → ;
     kaleidoscope::plugin::CharShift::KeyPair(Key_Period, LSHIFT(Key_Semicolon)),      // CS(1)   . → :
   );
+
+  // ---- Chords config
+ // CHORDS(
+ // )
+
 } // }}}1
 
 /**
