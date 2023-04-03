@@ -365,6 +365,7 @@ enum {
   FUNCTION,
   SYMBOL,
   UMLAUT,
+  MOUSE,
 };  // layers
 
 
@@ -469,6 +470,22 @@ KEYMAPS(
         ___,         ___,                   ___,         Key_Eszett,      ___,                           ___,
    ___, ___,         ___,                   ___,         ___,             ___,                           ___,
    ___, ___,         ___,                   ___,
+   ___), // }}}2
+
+
+  [MOUSE] =  KEYMAP_STACKED // {{{2
+  (___, ___, ___,          ___,           ___,          ___,           ___,
+   ___, ___, Key_mouseUpL, Key_mouseUp,   Key_mouseUpR, Key_mouseBtnR, ___,
+   ___, ___, Key_mouseL,   Key_mouseDn,   Key_mouseR,   Key_mouseBtnL,
+   ___, ___, Key_mouseDnL, ___,           Key_mouseDnR, Key_mouseBtnM, ___,
+   ___, ___, ___,          ___,
+   ___,
+
+   ___, ___, ___,          ___,           ___,          ___,           ___,
+   ___, ___, ___,          ___,           ___,          ___,           ___,
+        ___, ___,          ___,           ___,          ___,           ___,
+   ___, ___, ___,          ___,           ___,          ___,           ___,
+   ___, ___, ___,          ___,
    ___) // }}}2
 ) // KEYMAPS(
 
@@ -628,6 +645,22 @@ COLORMAPS(
         __B,   __B,          __B,         BRIGHT_GREEN, __B,         __B,
    __B, __B,   __B,          __B,         __B,          __B,         __B,
    __B, __B,   __B,          __B,
+   __B), // }}}2
+
+
+  [MOUSE] = COLORMAP_STACKED // {{{2
+  (__B, __B, __B,          __B,   __B,          __B,     __B,
+   __B, __B, BRIGHT_GREEN, GREEN, BRIGHT_GREEN, MAGENTA, __B,
+   __B, __B, GREEN,        GREEN, GREEN,        MAGENTA,
+   __B, __B, BRIGHT_GREEN, __B,   BRIGHT_GREEN, MAGENTA, __B,
+   __B, __B, __B,          __B,
+   __B,
+
+   __B, __B, __B,          __B,   __B,          __B,     __B,
+   __B, __B, __B,          __B,   __B,          __B,     __B,
+        __B, __B,          __B,   __B,          __B,     __B,
+   __B, __B, __B,          __B,   __B,          __B,     __B,
+   __B, __B, __B,          __B,
    __B) // }}}2
 )
 // }}}1
@@ -990,8 +1023,9 @@ void setup() {
   );
 
   // ---- Chords config
- // CHORDS(
- // )
+  CHORDS(
+    CHORD(Key_N, Key_R, Key_S), LockLayer(MOUSE),
+  )
 
 } // }}}1
 
