@@ -967,7 +967,9 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 11), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
   )
 //  Qukeys.setHoldTimeout(1000);
-//  Qukeys.setOverlapThreshold(50);
+  // Try to avoid primary values, when secondary modifier was meant (for , and z as layer shift to symbol layer)
+  // Use smaller numbers, if primary values appear where a modifier was wanted
+  Qukeys.setOverlapThreshold(50);
 //  Qukeys.setMinimumHoldTime(100);
 //  Qukeys.setMinimumPriorInterval(80);
   // Disable tap repeat as it reduces my ability to enter the same
