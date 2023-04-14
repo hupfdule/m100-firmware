@@ -382,7 +382,7 @@ KEYMAPS(
    Key_PageUp,            Key_Q,  Key_T,         Key_U,       Key_A,              Key_F,       Key_Tab,
    LT(NUMPAD, CapsLock),  Key_C,  Key_D,         Key_E,       Key_I,              Key_O,
    Key_PageDown,          Key_X,  Key_V,         CS(0),       CS(1),              Key_Minus,   Key_Escape,
-   OSM(LeftShift),  Key_Backspace,   Key_LeftAlt,   OSM(LeftControl),
+   OSM(LeftShift),  Key_Backspace,   OSM(LeftAlt),   OSM(LeftControl),
    ShiftToLayer(FUNCTION),
 
    LockLayer(SYMBOL),     Key_6,  Key_7,         Key_8,       Key_9,              Key_0,       LockLayer(NUMPAD),
