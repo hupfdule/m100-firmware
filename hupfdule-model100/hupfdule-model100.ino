@@ -1026,7 +1026,6 @@ void setup() {
 
   // ---- Qukeys config
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3,  3), ShiftToLayer(NUMPAD)),    // ,/Layer-shift to Number
     kaleidoscope::plugin::Qukey(0, KeyAddr(3,  4), ShiftToLayer(SYMBOL)),    // ./Layer-shift to Symbol
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 11), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
   )
