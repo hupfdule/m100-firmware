@@ -436,7 +436,7 @@ KEYMAPS(
    ___,                    Key_Colon,          Key_7, Key_8,         Key_9, Key_KeypadAdd,      ___,
                            Key_Period,         Key_4, Key_5,         Key_6, Key_KeypadDivide,   Key_Equals,
    ___,                    Key_Comma,          Key_1, Key_2,         Key_3, Key_KeypadMultiply, Key_Enter,
-   ___, ___, Key_0, Key_Enter,
+   ___, ___, Key_0, ___,
    ___), // }}}2
 
 
@@ -607,11 +607,11 @@ COLORMAPS(
    __B,   __B,   __B,   __B,
    __B,
 
-   __B,   __B,   __B,   BLUE,  __B,   BLUE,  __B,
-   __B,   GREEN, RED,   RED,   RED,   BLUE,  __B,
-          GREEN, RED,   RED,   RED,   BLUE,  BLUE,
-   __B,   GREEN, RED,   RED,   RED,   BLUE,  YELLOW,
-   __B, __B, RED, YELLOW,
+   __B,   __B,   __B,     BLUE,    __B,     BLUE, __B,
+   __B,   GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, __B,
+          GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, BLUE,
+   __B,   GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, YELLOW,
+   __B,   __B,   MAGENTA, __B,
    __B), // }}}2
 
 
