@@ -247,7 +247,7 @@ static const macro_t *dirUpMacro(KeyEvent &event) {
 /**
  * Enter “’t” as this is a common suffix in english, e.g. in “don’t”.
  */
-static const macro_t *apostropeTMacro(KeyEvent &event) {
+static const macro_t *apostropheTMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
     return MACRO(T(CapsLock),
                  T(GreaterThan),
@@ -301,7 +301,7 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
     break;
 
   case MACRO_APOSTROPHE_T:
-    return apostropeTMacro(event);
+    return apostropheTMacro(event);
     break;
   }
 
