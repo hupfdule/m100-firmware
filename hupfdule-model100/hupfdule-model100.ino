@@ -93,7 +93,7 @@
 
 // Support for one-shot modifiers and layer keys
 #include "Kaleidoscope-OneShot.h"
-#include "Kaleidoscope-Escape-OneShot.h"
+//#include "Kaleidoscope-Escape-OneShot.h"
 
 // Support for dynamic, Chrysalis-editable macros
 #include "Kaleidoscope-DynamicMacros.h"
@@ -839,8 +839,8 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // held" functionality for layer keys.
   OneShot,
   OneShotConfig,
-  EscapeOneShot,
-  EscapeOneShotConfig,
+  //EscapeOneShot,
+  //EscapeOneShotConfig,
 
   // The macros plugin adds support for macros
   Macros,
