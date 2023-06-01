@@ -11,6 +11,8 @@
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
 
+#include "Kaleidoscope-AutoShift.h"
+
 // Support for storing the keymap in EEPROM
 #include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-EEPROM-Keymap.h"
@@ -829,6 +831,10 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // performed when tapped, but the secondary action when held.
   Qukeys,
 
+  // Enable the AutoShift plugin to produce uppercase letters (or totally
+  // different characters) by holding a key for a period of time.
+  AutoShift,
+
   // SpaceCadet can turn your shifts into parens on tap, while keeping them as
   // Shifts when held. SpaceCadetConfig lets Chrysalis configure some aspects of
   // the plugin.
@@ -1051,6 +1057,32 @@ void setup() {
     CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),            // OneShot a symbol (or hold for multiple symbols)
     CHORD(Key_N, Key_R,             Key_S),  ShiftToLayer(MOUSE),   // Switch to mouse layer
   )
+
+  // ---- AutoShift config
+  AUTOSHIFT(
+    // upper row
+    kaleidoscope::plugin::LongPress(Key_Q,      Key_W),
+    kaleidoscope::plugin::LongPress(Key_T,      Key_M),
+    kaleidoscope::plugin::LongPress(Key_U,      Key_L),
+    kaleidoscope::plugin::LongPress(Key_A,      Key_H),
+    kaleidoscope::plugin::LongPress(Key_F,      Key_P),
+    // home row
+    kaleidoscope::plugin::LongPress(Key_C,      Key_G),
+    kaleidoscope::plugin::LongPress(Key_D,      Key_S),
+    kaleidoscope::plugin::LongPress(Key_E,      Key_R),
+    kaleidoscope::plugin::LongPress(Key_I,      Key_N),
+    kaleidoscope::plugin::LongPress(Key_O,      Key_B),
+    // lower row
+    kaleidoscope::plugin::LongPress(Key_X,      Key_Eszett), // position differs
+    kaleidoscope::plugin::LongPress(Key_V,      Key_J), // position differs
+    kaleidoscope::plugin::LongPress(Key_Comma,  Key_K), // does not work
+    kaleidoscope::plugin::LongPress(Key_Period, Key_Z), // does not work
+    kaleidoscope::plugin::LongPress(Key_Minus,  Key_Y),
+  )
+  AutoShift.setTimeout(300);
+  // disable AutoShift for all keys; only apply the explicit configuration
+  AutoShift.setEnabled(AutoShift.letterKeys());
+  AutoShift.disable(AutoShift.letterKeys());
 
 } // }}}1
 
