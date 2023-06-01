@@ -118,6 +118,8 @@
 
 // }}}1
 
+static void resetToBase();
+
 // ---- Macros {{{1
 /**
  * This 'enum' is a list of all the macros used by the Model 100's firmware
@@ -141,6 +143,7 @@ enum {
   MACRO_UNDERSCORE_SEPARATOR,
   MACRO_DIR_UP,
   MACRO_APOSTROPHE_T,
+  MACRO_RESET_TO_BASE,
 };
 
 /**
@@ -259,6 +262,15 @@ static const macro_t *apostropheTMacro(KeyEvent &event) {
 }
 
 /**
+ * Reset all OneShot keys and switch to the base layer.
+ */
+static const void *resetToBaseMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    resetToBase();
+  }
+}
+
+/**
  * macroAction dispatches keymap events that are tied to a macro
  * to that macro. It takes two uint8_t parameters.
  *
@@ -303,8 +315,11 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
   case MACRO_APOSTROPHE_T:
     return apostropheTMacro(event);
     break;
-  }
 
+  case MACRO_RESET_TO_BASE:
+    resetToBaseMacro(event);
+    break;
+  }
 
   return MACRO_NONE;
 }
@@ -434,7 +449,7 @@ KEYMAPS(
    ___,
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,           Key_F10,       Key_F11,
-   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, Key_Escape,               Key_Tab,                  ___,              ___,           Key_F12,
+   Consumer_PlaySlashPause,    Consumer_ScanNextTrack, M(MACRO_RESET_TO_BASE),   Key_Tab,                  ___,              Key_Escape,    Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,   Key_Slash,     ___,
    Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,    Key_Backslash, ___,
    ___,                        ___,                    Key_Enter,                ___,
@@ -737,6 +752,15 @@ static void toggleKeymapSource(uint8_t combo_index) {
  */
 static void enterHardwareTestMode(uint8_t combo_index) {
   HardwareTestMode.runTests();
+}
+
+
+/**
+ * Reset all OneShot keys and switch to the base layer.
+ */
+static void resetToBase() {
+  OneShot.cancel(true);
+  Layer.move(BONE);
 }
 
 
