@@ -404,7 +404,7 @@ KEYMAPS(
    Key_Enter,             Key_P,  Key_H,         Key_L,       Key_M,              Key_W,       Key_Eszett,
                           Key_B,  Key_N,         Key_R,       Key_S,              Key_G,       Key_J,
    Key_RightAlt,          Key_Y,  Key_Z,         Key_K,       Key_Backslash,      Key_Slash,   OSL(UMLAUT),
-   OSM(RightControl), Key_LeftGui,    Key_Spacebar,  OSM(RightShift),
+   OSM(RightControl), OSM(LeftGui),    Key_Spacebar,  OSM(RightShift),
    ShiftToLayer(FUNCTION)), // }}}2
 
 
