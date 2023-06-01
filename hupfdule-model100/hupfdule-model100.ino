@@ -429,7 +429,7 @@ KEYMAPS(
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___,
+   ___, LockLayer(NUMPAD), ___, ___,
    ___,
 
    M(MACRO_VERSION_INFO),  ___,                ___,   Key_Equals,    ___,   Key_KeypadSubtract, ___,
@@ -446,14 +446,14 @@ KEYMAPS(
    LCTRL(Key_R),               LCTRL(Key_S),           Key_mouseBtnR,            Key_mouseScrollDn,        Key_mouseBtnL,    LALT(Key_B),
    ___,                        Key_PrintScreen,        Key_Insert,               Key_Home,                 Key_End,          Key_Delete,    Key_Enter,
    ___,                        Key_Delete,             ___,                      ___,
-   ___,
+   LockLayer(FUNCTION),
 
    Consumer_ScanPreviousTrack, Key_F6,                 Key_F7,                   Key_F8,                   Key_F9,           Key_F10,       Key_F11,
    Consumer_PlaySlashPause,    Consumer_ScanNextTrack, M(MACRO_RESET_TO_BASE),   Key_Tab,                  ___,              Key_Escape,    Key_F12,
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,   Key_Slash,     ___,
    Key_PcApplication,          Key_Backspace,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, Consumer_Mute,    Key_Backslash, ___,
    ___,                        ___,                    Key_Enter,                ___,
-   ___), // }}}2
+   LockLayer(FUNCTION)), // }}}2
 
 
   [SYMBOL] = KEYMAP_STACKED // {{{2
@@ -461,7 +461,7 @@ KEYMAPS(
    ___, Key_Caret,           Key_Underscore,      Key_LeftBracket,      Key_RightBracket,      Key_DoubleQuote, ___,
    ___, Key_Backslash,       Key_Slash,           Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Asterisk,
    ___, Key_Pound,           Key_Tilde,           Key_Pipe,             Key_Dollar,            Key_Backtick,    ___,
-   ___, ___,                 ___,                 ___,
+   ___, LockLayer(SYMBOL),   ___,                 ___,
    ___,
 
    ___, ___,                 ___,                 ___,                  ___,                   ___,             ___,
@@ -489,11 +489,11 @@ KEYMAPS(
 
 
   [MOUSE] =  KEYMAP_STACKED // {{{2
-  (___, ___, ___,          ___,           ___,          ___,           ___,
-   ___, ___, Key_mouseUpL, Key_mouseUp,   Key_mouseUpR, Key_mouseBtnR, ___,
-   ___, ___, Key_mouseL,   Key_mouseDn,   Key_mouseR,   Key_mouseBtnL,
-   ___, ___, Key_mouseDnL, ___,           Key_mouseDnR, Key_mouseBtnM, ___,
-   ___, ___, ___,          ___,
+  (___, ___,              ___,          ___,         ___,          ___,           ___,
+   ___, ___,              Key_mouseUpL, Key_mouseUp, Key_mouseUpR, Key_mouseBtnR, ___,
+   ___, ___,              Key_mouseL,   Key_mouseDn, Key_mouseR,   Key_mouseBtnL,
+   ___, ___,              Key_mouseDnL, ___,         Key_mouseDnR, Key_mouseBtnM, ___,
+   ___, LockLayer(MOUSE), ___,          ___,
    ___,
 
    ___, ___, ___,          ___,           ___,          ___,           ___,
@@ -1048,9 +1048,9 @@ void setup() {
 
   // ---- Chords config
   CHORDS(
-    CHORD(Key_K, Key_Backslash),    LockLayer  (SYMBOL),  // Toggle symbol layer on
-    CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),  // Toggle symbol layer off (same physical keys as for toggling on)
-    CHORD(Key_N, Key_R, Key_S),     LockLayer  (MOUSE),   // Switch to mouse layer
+    CHORD(Key_K, Key_Backslash),    LockLayer(SYMBOL),              // OneShot a symbol (or hold for multiple symbols)
+    CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),            // OneShot a symbol (or hold for multiple symbols)
+    CHORD(Key_N, Key_R,             Key_S),  ShiftToLayer(MOUSE),   // Switch to mouse layer
   )
 
 } // }}}1
