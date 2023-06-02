@@ -36,6 +36,9 @@ version:
 version-tag:
 	@echo "v${VERSION}"
 
+keymapviz:
+	keymapviz -c hupfdule-model100/keymapviz.conf -t fancy -k model01 -r  hupfdule-model100/hupfdule-model100.ino
+
 output:
 	install -d output
 
