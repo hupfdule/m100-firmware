@@ -1,6 +1,6 @@
 VERSION="0.91.2-snapshot"
 #GIT_TAG=$(shell git tag --points-at HEAD)
-GIT_TAG=$(shell git describe --tags HEAD)
+GIT_TAG=$(shell git describe --tags --always --dirty)
 VERSION:=$(GIT_TAG)-hupfdule
 
 export ARDUINO_DIRECTORIES_USER ?= ${CURDIR}/.arduino/user
