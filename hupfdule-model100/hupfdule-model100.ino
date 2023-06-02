@@ -145,6 +145,9 @@ enum {
   MACRO_UNDERSCORE_SEPARATOR,
   MACRO_DIR_UP,
   MACRO_APOSTROPHE_T,
+  MACRO_APOSTROPHE_S,
+  MACRO_QUOTE_START_DE,
+  MACRO_QUOTE_END_DE,
   MACRO_RESET_TO_BASE,
 };
 
@@ -264,6 +267,46 @@ static const macro_t *apostropheTMacro(KeyEvent &event) {
 }
 
 /**
+ * Enter “’s” as this is a common suffix in german, e.g. in “Gib’s her”.
+ */
+static const macro_t *apostropheSMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(CapsLock),
+                 T(GreaterThan),
+                 T(SingleQuote),
+                 T(S)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
+ * Enter a german starting quote character.
+ */
+static const macro_t *quoteStartDeMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(CapsLock),
+                 T(Comma),
+                 T(DoubleQuote)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
+ * Enter a german closing quote character.
+ */
+static const macro_t *quoteEndDeMacro(KeyEvent &event) {
+  if (keyToggledOn(event.state)) {
+    return MACRO(T(CapsLock),
+                 T(LessThan),
+                 T(DoubleQuote)
+           );
+  }
+  return MACRO_NONE;
+}
+
+/**
  * Reset all OneShot keys and switch to the base layer.
  */
 static const void *resetToBaseMacro(KeyEvent &event) {
@@ -316,6 +359,18 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
 
   case MACRO_APOSTROPHE_T:
     return apostropheTMacro(event);
+    break;
+
+  case MACRO_APOSTROPHE_S:
+    return apostropheSMacro(event);
+    break;
+
+  case MACRO_QUOTE_START_DE:
+    return quoteStartDeMacro(event);
+    break;
+
+  case MACRO_QUOTE_END_DE:
+    return quoteEndDeMacro(event);
     break;
 
   case MACRO_RESET_TO_BASE:
@@ -475,18 +530,18 @@ KEYMAPS(
 
 
   [UMLAUT] =  KEYMAP_STACKED // {{{2
-  (___, ___,         ___,                   ___,         ___,             ___,                           ___,
-   ___, M(MACRO_QU), M(MACRO_APOSTROPHE_T), Key_UUmlaut, Key_AUmlaut,     ___,                           ___,
-   ___, ___,         Key_Eszett,            ___,         Key_J,           Key_OUmlaut,
-   ___, ___,         ___,                   ___,         M(MACRO_DIR_UP), M(MACRO_UNDERSCORE_SEPARATOR), ___,
-   ___, ___,         ___,                   ___,
+  (___, ___,         ___,                     ___,                   ___,                   ___,                           ___,
+   ___, M(MACRO_QU), M(MACRO_APOSTROPHE_T),   Key_UUmlaut,           Key_AUmlaut,           ___,                           ___,
+   ___, ___,         Key_Eszett,              ___,                   Key_J,                 Key_OUmlaut,
+   ___, ___,         ___,                     ___,                   M(MACRO_DIR_UP),       M(MACRO_UNDERSCORE_SEPARATOR), ___,
+   ___, ___,         ___,                     ___,
    ___,
 
-   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
-   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
-        ___,         ___,                   ___,         Key_Eszett,      ___,                           ___,
-   ___, ___,         ___,                   ___,         ___,             ___,                           ___,
-   ___, ___,         ___,                   ___,
+   ___, ___,         ___,                     ___,                   ___,                   ___,                           ___,
+   ___, ___,         ___,                     ___,                   ___,                   ___,                           ___,
+        ___,         ___,                     ___,                   M(MACRO_APOSTROPHE_S), ___,                           ___,
+   ___, ___,         M(MACRO_QUOTE_START_DE), M(MACRO_QUOTE_END_DE), ___,                   ___,                           ___,
+   ___, ___,         ___,                     ___,
    ___), // }}}2
 
 
@@ -650,17 +705,17 @@ COLORMAPS(
 
 
   [UMLAUT] = COLORMAP_STACKED // {{{2
-  (__B, __B,   __B,          __B,         __B,          __B,         __B,
-   __B, GREEN, GREEN,        BRIGHT_BLUE, BRIGHT_BLUE,  __B,         __B,
-   __B, __B,   BRIGHT_GREEN, __B,         BRIGHT_GREEN, BRIGHT_BLUE,
-   __B, __B,   __B,          __B,         GREEN,        GREEN,       __B,
+  (__B, __B,   __B,          __B,          __B,          __B,         __B,
+   __B, GREEN, GREEN,        BRIGHT_BLUE,  BRIGHT_BLUE,  __B,         __B,
+   __B, __B,   BRIGHT_GREEN, __B,          BRIGHT_GREEN, BRIGHT_BLUE,
+   __B, __B,   __B,          __B,          GREEN,        GREEN,       __B,
    __B, __B,   __B,          __B,
    __B,
 
-   __B, __B,   __B,          __B,         __B,          __B,         __B,
-   __B, __B,   __B,          __B,         __B,          __B,         __B,
-        __B,   __B,          __B,         BRIGHT_GREEN, __B,         __B,
-   __B, __B,   __B,          __B,         __B,          __B,         __B,
+   __B, __B,   __B,          __B,          __B,          __B,         __B,
+   __B, __B,   __B,          __B,          __B,          __B,         __B,
+        __B,   __B,          __B,          BRIGHT_GREEN, __B,         __B,
+   __B, __B,   BRIGHT_GREEN, BRIGHT_GREEN, __B,          __B,         __B,
    __B, __B,   __B,          __B,
    __B), // }}}2
 
