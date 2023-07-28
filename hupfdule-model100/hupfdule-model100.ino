@@ -1242,8 +1242,10 @@ void setup() {
 
   // ---- Qukeys config
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3,  4), ShiftToLayer(SYMBOL)),    // ./Layer-shift to Symbol
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 11), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
+    //kaleidoscope::plugin::Qukey(0, KeyAddr(3,  4), ShiftToLayer(SYMBOL)),    // ./Layer-shift to Symbol
+    //kaleidoscope::plugin::Qukey(0, KeyAddr(3, 11), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3,  0), ShiftToLayer(SYMBOL)),    // ./Layer-shift to Symbol
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 15), ShiftToLayer(SYMBOL)),    // z/Layer-shift to Symbol
   )
 //  Qukeys.setHoldTimeout(1000);
   // Try to avoid primary values, when secondary modifier was meant (for , and z as layer shift to symbol layer)
@@ -1266,6 +1268,7 @@ void setup() {
     CHORD(Key_K, Key_Backslash),    LockLayer(SYMBOL),              // OneShot a symbol (or hold for multiple symbols)
     CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),            // OneShot a symbol (or hold for multiple symbols)
     CHORD(Key_N, Key_R,             Key_S),  ShiftToLayer(MOUSE),   // Switch to mouse layer
+    CHORD(Key_Backspace, Key_Spacebar), OSL(SYMBOL),                // OneShot a symbol (or hold for multiple symbols)
   )
 
   // ---- AutoShift config
