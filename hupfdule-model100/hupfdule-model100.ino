@@ -538,7 +538,7 @@ KEYMAPS(
 /* ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐                           ┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐
  * │      │      │      │      │      │      │      │                           │M(MACR│      │      │  =   │      │  −   │      │
  * ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤                           ├──────┼──────┼──────┼──────┼──────┼──────┼──────┤
- * │      │      │      │      │      │      │      │                           │      │  :   │  7   │  8   │  9   │  +   │      │
+ * │      │      │      │      │      │      │      │                           │      │  :   │  7   │  8   │  9   │  +   │  ␣   │
  * ├──────┼──────┼──────┼──────┼──────┼──────┤      │                           │      ├──────┼──────┼──────┼──────┼──────┼──────┤
  * │      │      │      │      │      │      ├──────┤                           ├──────┤  .   │  4   │  5   │  6   │  /   │  =   │
  * ├──────┼──────┼──────┼──────┼──────┼──────┤      │                           │      ├──────┼──────┼──────┼──────┼──────┼──────┤
@@ -565,7 +565,7 @@ KEYMAPS(
    ___,
 
    M(MACRO_VERSION_INFO),  ___,                ___,   Key_Equals,    ___,   Key_KeypadSubtract, ___,
-   ___,                    Key_Colon,          Key_7, Key_8,         Key_9, Key_KeypadAdd,      ___,
+   ___,                    Key_Colon,          Key_7, Key_8,         Key_9, Key_KeypadAdd,      Key_Spacebar,
                            Key_Period,         Key_4, Key_5,         Key_6, Key_KeypadDivide,   Key_Equals,
    ___,                    Key_Comma,          Key_1, Key_2,         Key_3, Key_KeypadMultiply, Key_Enter,
    ___, ___, Key_0, ___,
@@ -820,7 +820,7 @@ COLORMAPS(
    __B,
 
    __B,   __B,   __B,     BLUE,    __B,     BLUE, __B,
-   __B,   GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, __B,
+   __B,   GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, YELLOW,
           GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, BLUE,
    __B,   GREEN, MAGENTA, MAGENTA, MAGENTA, BLUE, YELLOW,
    __B,   __B,   MAGENTA, __B,
