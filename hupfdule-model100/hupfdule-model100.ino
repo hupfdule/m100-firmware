@@ -1273,24 +1273,43 @@ void setup() {
 
   // ---- AutoShift config
   AUTOSHIFT(
+    /// Left side
     // upper row
-    kaleidoscope::plugin::LongPress(Key_Q,      Key_W),
-    kaleidoscope::plugin::LongPress(Key_T,      Key_M),
-    kaleidoscope::plugin::LongPress(Key_U,      Key_L),
-    kaleidoscope::plugin::LongPress(Key_A,      Key_H),
-    kaleidoscope::plugin::LongPress(Key_F,      Key_P),
+    kaleidoscope::plugin::LongPress(Key_Q,         Key_W),
+    kaleidoscope::plugin::LongPress(Key_T,         Key_M),
+    kaleidoscope::plugin::LongPress(Key_U,         Key_L),
+    kaleidoscope::plugin::LongPress(Key_A,         Key_H),
+    kaleidoscope::plugin::LongPress(Key_F,         Key_P),
     // home row
-    kaleidoscope::plugin::LongPress(Key_C,      Key_G),
-    kaleidoscope::plugin::LongPress(Key_D,      Key_S),
-    kaleidoscope::plugin::LongPress(Key_E,      Key_R),
-    kaleidoscope::plugin::LongPress(Key_I,      Key_N),
-    kaleidoscope::plugin::LongPress(Key_O,      Key_B),
+    kaleidoscope::plugin::LongPress(Key_C,         Key_G),
+    kaleidoscope::plugin::LongPress(Key_D,         Key_S),
+    kaleidoscope::plugin::LongPress(Key_E,         Key_R),
+    kaleidoscope::plugin::LongPress(Key_I,         Key_N),
+    kaleidoscope::plugin::LongPress(Key_O,         Key_B),
     // lower row
-    kaleidoscope::plugin::LongPress(Key_X,      Key_Eszett), // position differs
-    kaleidoscope::plugin::LongPress(Key_V,      Key_J), // position differs
-    kaleidoscope::plugin::LongPress(Key_Comma,  Key_K), // does not work
-    kaleidoscope::plugin::LongPress(Key_Period, Key_Z), // does not work
-    kaleidoscope::plugin::LongPress(Key_Minus,  Key_Y),
+    kaleidoscope::plugin::LongPress(Key_X,         Key_Eszett), // position differs
+    kaleidoscope::plugin::LongPress(Key_V,         Key_J), // position differs
+    kaleidoscope::plugin::LongPress(Key_Comma,     Key_K), // does not work
+    kaleidoscope::plugin::LongPress(Key_Period,    Key_Z), // does not work
+    kaleidoscope::plugin::LongPress(Key_Minus,     Key_Y),
+    /// Right side
+    kaleidoscope::plugin::LongPress(Key_P,         Key_F),
+    kaleidoscope::plugin::LongPress(Key_H,         Key_A),
+    kaleidoscope::plugin::LongPress(Key_L,         Key_U),
+    kaleidoscope::plugin::LongPress(Key_M,         Key_T),
+    kaleidoscope::plugin::LongPress(Key_W,         Key_Q),
+    // home row
+    kaleidoscope::plugin::LongPress(Key_B,         Key_O),
+    kaleidoscope::plugin::LongPress(Key_N,         Key_I),
+    kaleidoscope::plugin::LongPress(Key_R,         Key_E),
+    kaleidoscope::plugin::LongPress(Key_S,         Key_D),
+    kaleidoscope::plugin::LongPress(Key_G,         Key_C),
+    // lower row
+    kaleidoscope::plugin::LongPress(Key_Y,         Key_Minus),
+    kaleidoscope::plugin::LongPress(Key_Z,         Key_Period),
+    kaleidoscope::plugin::LongPress(Key_K,         Key_Comma),
+    kaleidoscope::plugin::LongPress(Key_Backslash, Key_V),
+    kaleidoscope::plugin::LongPress(Key_Slash,     Key_X),
   )
   AutoShift.setTimeout(250);
   // disable AutoShift for all keys; only apply the explicit configuration
