@@ -1,4 +1,4 @@
-// -*- mode: c++ -*-
+//  *- mode: c++ -*-
 // Copyright 2016-2022 Keyboardio, inc. <jesse@keyboard.io>
 // See "LICENSE" for license details
 
@@ -1292,7 +1292,7 @@ void setup() {
     kaleidoscope::plugin::LongPress(Key_Period, Key_Z), // does not work
     kaleidoscope::plugin::LongPress(Key_Minus,  Key_Y),
   )
-  AutoShift.setTimeout(300);
+  AutoShift.setTimeout(250);
   // disable AutoShift for all keys; only apply the explicit configuration
   AutoShift.setEnabled(AutoShift.letterKeys());
   AutoShift.disable(AutoShift.letterKeys());
