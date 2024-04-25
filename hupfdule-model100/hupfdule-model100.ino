@@ -32,6 +32,9 @@
 // Support for controlling the keyboard's LEDs
 #include "Kaleidoscope-LEDControl.h"
 
+// Register a heatmap of the used keys
+#include "Kaleidoscope-Heatmap.h"
+
 // Support for "Numpad" mode, which is mostly just the Numpad specific LED mode
 //#include "Kaleidoscope-NumPad.h"
 
@@ -1130,6 +1133,9 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,
+
+  // The heatmap effect shows a heatmap of the used keys
+  HeatmapEffect,
 
   // The LED Palette Theme plugin provides a shared palette for other plugins,
   // like Colormap below
