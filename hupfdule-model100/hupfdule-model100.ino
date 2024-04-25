@@ -1274,6 +1274,12 @@ void setup() {
   // ---- AutoShift config
   AUTOSHIFT(
     /// Left side
+    // top row
+    kaleidoscope::plugin::LongPress(Key_1,         Key_0),
+    kaleidoscope::plugin::LongPress(Key_2,         Key_9),
+    kaleidoscope::plugin::LongPress(Key_3,         Key_8),
+    kaleidoscope::plugin::LongPress(Key_4,         Key_7),
+    kaleidoscope::plugin::LongPress(Key_5,         Key_6),
     // upper row
     kaleidoscope::plugin::LongPress(Key_Q,         Key_W),
     kaleidoscope::plugin::LongPress(Key_T,         Key_M),
@@ -1293,6 +1299,13 @@ void setup() {
     kaleidoscope::plugin::LongPress(Key_Period,    Key_Z), // does not work
     kaleidoscope::plugin::LongPress(Key_Minus,     Key_Y),
     /// Right side
+    // top row
+    kaleidoscope::plugin::LongPress(Key_6,         Key_5),
+    kaleidoscope::plugin::LongPress(Key_7,         Key_4),
+    kaleidoscope::plugin::LongPress(Key_8,         Key_3),
+    kaleidoscope::plugin::LongPress(Key_9,         Key_2),
+    kaleidoscope::plugin::LongPress(Key_0,         Key_1),
+    // upper row
     kaleidoscope::plugin::LongPress(Key_P,         Key_F),
     kaleidoscope::plugin::LongPress(Key_H,         Key_A),
     kaleidoscope::plugin::LongPress(Key_L,         Key_U),
