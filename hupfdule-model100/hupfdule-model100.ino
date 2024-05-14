@@ -1044,10 +1044,6 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // performed when tapped, but the secondary action when held.
   Qukeys,
 
-  // Enable the AutoShift plugin to produce uppercase letters (or totally
-  // different characters) by holding a key for a period of time.
-  AutoShift,
-
   // SpaceCadet can turn your shifts into parens on tap, while keeping them as
   // Shifts when held. SpaceCadetConfig lets Chrysalis configure some aspects of
   // the plugin.
@@ -1080,6 +1076,10 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
 
   // Allow assigning different chars to shifted and unshifted positions of a key
   CharShift,
+
+  // Enable the AutoShift plugin to produce uppercase letters (or totally
+  // different characters) by holding a key for a period of time.
+  AutoShift,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
@@ -1271,9 +1271,9 @@ void setup() {
 
   // ---- Chords config
   CHORDS(
-    CHORD(Key_K, Key_Backslash),    LockLayer(SYMBOL),              // OneShot a symbol (or hold for multiple symbols)
-    CHORD(Key_SingleQuote, Key_At), UnlockLayer(SYMBOL),            // OneShot a symbol (or hold for multiple symbols)
-    CHORD(Key_N, Key_R,             Key_S),  ShiftToLayer(MOUSE),   // Switch to mouse layer
+    CHORD(Key_K, Key_Backslash),        LockLayer(SYMBOL),          // OneShot a symbol (or hold for multiple symbols)
+    CHORD(Key_SingleQuote, Key_At),     UnlockLayer(SYMBOL),        // OneShot a symbol (or hold for multiple symbols)
+    CHORD(Key_N, Key_R, Key_S),         ShiftToLayer(MOUSE),        // Switch to mouse layer
     CHORD(Key_Backspace, Key_Spacebar), OSL(SYMBOL),                // OneShot a symbol (or hold for multiple symbols)
   )
 
