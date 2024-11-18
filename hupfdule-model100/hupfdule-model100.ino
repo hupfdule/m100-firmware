@@ -1270,12 +1270,12 @@ void setup() {
   );
 
   // ---- Chords config
-  CHORDS(
-    CHORD(Key_K, Key_Backslash),        LockLayer(SYMBOL),          // OneShot a symbol (or hold for multiple symbols)
-    CHORD(Key_SingleQuote, Key_At),     UnlockLayer(SYMBOL),        // OneShot a symbol (or hold for multiple symbols)
-    CHORD(Key_N, Key_R, Key_S),         ShiftToLayer(MOUSE),        // Switch to mouse layer
-    CHORD(Key_Backspace, Key_Spacebar), OSL(SYMBOL),                // OneShot a symbol (or hold for multiple symbols)
-  )
+  //CHORDS(
+    //CHORD(Key_K, Key_Backslash),        LockLayer(SYMBOL),          // OneShot a symbol (or hold for multiple symbols)
+    //CHORD(Key_SingleQuote, Key_At),     UnlockLayer(SYMBOL),        // OneShot a symbol (or hold for multiple symbols)
+    //CHORD(Key_N, Key_R, Key_S),         ShiftToLayer(MOUSE),        // Switch to mouse layer
+    //CHORD(Key_Backspace, Key_Spacebar), OSL(SYMBOL),                // OneShot a symbol (or hold for multiple symbols)
+  //)
 
   LongPress.setTimeout(250);
   // ---- LongPress config
