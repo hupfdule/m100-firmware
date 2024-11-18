@@ -11,7 +11,7 @@
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
 
-#include "Kaleidoscope-AutoShift.h"
+#include "Kaleidoscope-LongPress.h"
 
 // Support for storing the keymap in EEPROM
 #include "Kaleidoscope-EEPROM-Settings.h"
@@ -320,11 +320,11 @@ static const void *resetToBaseMacro(KeyEvent &event) {
 }
 
 /**
- * Toggle AutoShift on and off.
+ * Toggle LongPress on and off.
  */
-static const void *toggleAutoShiftMacro(KeyEvent &event) {
+static const void *toggleLongPressMacro(KeyEvent &event) {
   if (keyToggledOn(event.state)) {
-    AutoShift.toggle();
+    LongPress.toggle();
   }
 }
 
@@ -391,7 +391,7 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
     break;
 
   case MACRO_TOGGLE_AUTOSHIFT:
-    toggleAutoShiftMacro(event);
+    toggleLongPressMacro(event);
     break;
   }
 
@@ -1077,17 +1077,17 @@ KALEIDOSCOPE_INIT_PLUGINS( // {{{1
   // Allow assigning different chars to shifted and unshifted positions of a key
   CharShift,
 
-  // Enable the AutoShift plugin to produce uppercase letters (or totally
-  // different characters) by holding a key for a period of time.
-  AutoShift,
+  // Enable the Chord plugin to produce different keys when pressing some
+  // keys simultaneously.
+  Chord,
+
+  // Enable the LongPress plugin to produce different letters by holding a
+  // key for a period of time.
+  LongPress,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
   GeminiPR,
-
-  // Enable the Chord plugin to produce different keys when pressing some
-  // keys simultaneously.
-  Chord,
 
   // }}}2
   // ----------------------------------------------------------------------
@@ -1277,64 +1277,63 @@ void setup() {
     CHORD(Key_Backspace, Key_Spacebar), OSL(SYMBOL),                // OneShot a symbol (or hold for multiple symbols)
   )
 
-  // ---- AutoShift config
-  AUTOSHIFT(
+  LongPress.setTimeout(250);
+  // ---- LongPress config
+  LONGPRESS(
+    kaleidoscope::plugin::LongPressKey(BONE, KeyAddr(3, 3),     Key_K),
+    kaleidoscope::plugin::LongPressKey(BONE, KeyAddr(3, 4),     Key_Z),
+
     /// Left side
     // top row
-    kaleidoscope::plugin::LongPress(Key_1,         Key_0),
-    kaleidoscope::plugin::LongPress(Key_2,         Key_9),
-    kaleidoscope::plugin::LongPress(Key_3,         Key_8),
-    kaleidoscope::plugin::LongPress(Key_4,         Key_7),
-    kaleidoscope::plugin::LongPress(Key_5,         Key_6),
-    // upper row
-    kaleidoscope::plugin::LongPress(Key_Q,         Key_W),
-    kaleidoscope::plugin::LongPress(Key_T,         Key_M),
-    kaleidoscope::plugin::LongPress(Key_U,         Key_L),
-    kaleidoscope::plugin::LongPress(Key_A,         Key_H),
-    kaleidoscope::plugin::LongPress(Key_F,         Key_P),
-    // home row
-    kaleidoscope::plugin::LongPress(Key_C,         Key_G),
-    kaleidoscope::plugin::LongPress(Key_D,         Key_S),
-    kaleidoscope::plugin::LongPress(Key_E,         Key_R),
-    kaleidoscope::plugin::LongPress(Key_I,         Key_N),
-    kaleidoscope::plugin::LongPress(Key_O,         Key_B),
-    // lower row
-    kaleidoscope::plugin::LongPress(Key_X,         Key_Eszett), // position differs
-    kaleidoscope::plugin::LongPress(Key_V,         Key_J), // position differs
-    kaleidoscope::plugin::LongPress(Key_Comma,     Key_K), // does not work
-    kaleidoscope::plugin::LongPress(Key_Period,    Key_Z), // does not work
-    kaleidoscope::plugin::LongPress(Key_Minus,     Key_Y),
-    /// Right side
-    // top row
-    kaleidoscope::plugin::LongPress(Key_6,         Key_5),
-    kaleidoscope::plugin::LongPress(Key_7,         Key_4),
-    kaleidoscope::plugin::LongPress(Key_8,         Key_3),
-    kaleidoscope::plugin::LongPress(Key_9,         Key_2),
-    kaleidoscope::plugin::LongPress(Key_0,         Key_1),
-    // upper row
-    kaleidoscope::plugin::LongPress(Key_P,         Key_F),
-    kaleidoscope::plugin::LongPress(Key_H,         Key_A),
-    kaleidoscope::plugin::LongPress(Key_L,         Key_U),
-    kaleidoscope::plugin::LongPress(Key_M,         Key_T),
-    kaleidoscope::plugin::LongPress(Key_W,         Key_Q),
-    // home row
-    kaleidoscope::plugin::LongPress(Key_B,         Key_O),
-    kaleidoscope::plugin::LongPress(Key_N,         Key_I),
-    kaleidoscope::plugin::LongPress(Key_R,         Key_E),
-    kaleidoscope::plugin::LongPress(Key_S,         Key_D),
-    kaleidoscope::plugin::LongPress(Key_G,         Key_C),
-    // lower row
-    kaleidoscope::plugin::LongPress(Key_Y,         Key_Minus),
-    kaleidoscope::plugin::LongPress(Key_Z,         Key_Period),
-    kaleidoscope::plugin::LongPress(Key_K,         Key_Comma),
-    kaleidoscope::plugin::LongPress(Key_Backslash, Key_V),
-    kaleidoscope::plugin::LongPress(Key_Slash,     Key_X),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_1,         Key_0),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_2,         Key_9),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_3,         Key_8),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_4,         Key_7),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_5,         Key_6),
+    // upper row                   Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Q,         Key_W),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_T,         Key_M),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_U,         Key_L),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_A,         Key_H),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_F,         Key_P),
+    // home row                    Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_C,         Key_G),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_D,         Key_S),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_E,         Key_R),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_I,         Key_N),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_O,         Key_B),
+    // lower row                   Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_X,         Key_Eszett), // position differs
+    kaleidoscope::plugin::LongPressKey(BONE, Key_V,         Key_J), // position differs
+    //kaleidoscope::plugin::LongPreMappingey(Key_Comma,     Key_K), // does not work
+    //kaleidoscope::plugin::LongPreMappingey(Key_Period,    Key_Z), // does not work
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Minus,     Key_Y),
+    /// Right side                 Mapping
+    // top row                     Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_6,         Key_5),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_7,         Key_4),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_8,         Key_3),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_9,         Key_2),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_0,         Key_1),
+    // upper row                   Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_P,         Key_F),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_H,         Key_A),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_L,         Key_U),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_M,         Key_T),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_W,         Key_Q),
+    // home row                    Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_B,         Key_O),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_N,         Key_I),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_R,         Key_E),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_S,         Key_D),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_G,         Key_C),
+    // lower row                   Mapping
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Y,         Key_Minus),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Z,         Key_Period),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_K,         Key_Comma),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Backslash, Key_V),
+    kaleidoscope::plugin::LongPressKey(BONE, Key_Slash,     Key_X),
   )
-  AutoShift.setTimeout(250);
-  // disable AutoShift for all keys; only apply the explicit configuration
-  AutoShift.setEnabled(AutoShift.letterKeys());
-  AutoShift.disable(AutoShift.letterKeys());
-
 } // }}}1
 
 /**
