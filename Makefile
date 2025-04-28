@@ -91,6 +91,8 @@ create-snapshot:
 collect-build-info:
 	./tools/collect-build-info
 
+changelog:
+	git log --pretty='# %s%n%nDate:   %ai%nCommit: %H%n%n%b%n' upstream/master..hupfdule-dev2
 
 finalize-release:
 	./tools/release finalize
