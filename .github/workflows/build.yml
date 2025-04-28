@@ -32,10 +32,6 @@ jobs:
         with:
           path: ${{ github.workspace}}/.arduino/downloads
           key: ${{ runner.os }}-arduino-downloads
-      - run: echo "EEN"
-      - run: make version
-      - run: make version-tag
-      - run: git describe --tags --always --dirty
       - run: make setup
       - run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp
       - name: Collect the commit SHAs of the build
