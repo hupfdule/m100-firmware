@@ -40,7 +40,7 @@ jobs:
       - name: Add the NEWS as a changelog to the artifacts
         run: cp NEWS.md output/firmware-changelog.md
       - name: Add all commit logs to changelog
-        run: git log --pretty='# %s%n%nDate:   %ai%nCommit: %H%n%n%b%n' upstream/master..hupfdule-dev2 > output/firmware-changelog.md
+        run: make changelog > output/firmware-changelog.md
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
