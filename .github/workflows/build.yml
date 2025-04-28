@@ -22,7 +22,8 @@ jobs:
       COMMIT_SHA: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
-        fetch-depth: 0
+        with:
+          fetch-depth: 0
       - name: Discover the version tag
         id: version
         run: |
