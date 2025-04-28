@@ -91,6 +91,8 @@ create-snapshot:
 collect-build-info:
 	./tools/collect-build-info
 
+changelog:
+	git log --pretty='# %s%n%nDate:   %ai%nCommit: %H%n%n%b%n' upstream/master..hupfdule-dev
 
 finalize-release:
 	./tools/release finalize
@@ -103,13 +105,15 @@ update-tag-and-delete-gh-release:
 
 create-gh-release:
 	gh release create -p \
-		-t "Chrysalis Firmware Bundle $(EMBEDDED_VERSION)"\
+		-t "Hupfdule m100 Firmware $(EMBEDDED_VERSION)"\
 		-F ${OUTPUT_DIR}/release-notes.md \
-		${TAG}
+		${TAG} \
+		--latest
 
 upload-gh-release:
 	gh release upload ${TAG} \
 		firmware-files.tar.gz \
+		${OUTPUT_DIR}/*/*.bin \
 		${OUTPUT_DIR}/build-info.yml \
 		${OUTPUT_DIR}/firmware-changelog.md
 

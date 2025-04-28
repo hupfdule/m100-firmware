@@ -86,7 +86,7 @@ extract_current_news() {
 install -d output
 
 cat >output/release-notes.md <<EOF
-Chrysalis Firmware Bundle $(make --no-print-directory version)
+Hupfdule m100 Firmware $(make --no-print-directory version)
 
 ## Build Information
 
@@ -100,11 +100,11 @@ Chrysalis Firmware Bundle $(make --no-print-directory version)
 | Library                   | Link                                                                          |
 |:--------------------------|:------------------------------------------------------------------------------|
 | Kaleidoscope              | keyboardio/Kaleidoscope@$(get_sha ${KALEIDOSCOPE_DIR})              |
-| Chrysalis-Firmware-Bundle | keyboardio/Chrysalis-Firmware-Bundle@$(get_sha .) |
+| hupfdule m100-firmware    | hupfdule/m100-firmware@$(get_sha .) |
 
 # Changelog
 
-$(extract_current_news)
+$(git log -1 --pretty='# %s%n%nDate:   %ai%nCommit: %H%n%n%b%n')
 EOF
 
 cat >output/build-info.yml <<EOF
@@ -119,7 +119,7 @@ dependencies:
   libraries:
     common:
       - keyboardio/Kaleidoscope@$(get_sha ${KALEIDOSCOPE_DIR})
-      - keyboardio/Chrysalis-Firmware-Bundle@$(get_sha .)
+      - hupfdule/m100-firmware@$(get_sha .)
 
 firmware:
 $(collect_vendor_info Keyboardio)

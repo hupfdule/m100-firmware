@@ -1,88 +1,87 @@
-name: Build & Publish
+name: Build and Release
 
 on:
   push:
-    branches:
-      - '**'  # Runs on pushes to any branch
+    branches: ['hupfdule-dev']   # Trigger on pushes to the hupfdule branch
   pull_request:
-    branches:
-      - '**'  # Runs on PRs targeting any branch
-  workflow_dispatch:
+    branches: ['hupfdule-dev']   # Trigger on PRs to the hupfdule branch
+
+permissions:
+  contents: write  # Required for creating releases
 
 env:
   LC_ALL: C
-  EXTRA_VERSION: ${{ github.run_number }}
+
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
-    env:
-      COMMIT_SHA: ${{ github.sha }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Discover the version tag
-        id: version
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full commit history
+
+      - name: Add upstream remote  # We need to fetch the upstream source to be able to create the changelog of our own changes
         run: |
-          TAG=$(make version-tag)
-          echo "TAG=$TAG" >> $GITHUB_ENV
+          git remote add upstream https://github.com/keyboardio/Chrysalis-Firmware-Bundle
+          git fetch upstream
+          git checkout ${{ github.ref }}  # Checkout the branch of the commit again to make sure we are operation on that one
+
+      - name: Configure Git identity
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Get commit SHA
+        id: sha
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+          echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Cache arduino dep downloads
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace}}/.arduino/downloads
           key: ${{ runner.os }}-arduino-downloads
-      - run: make setup
-      - run: make all KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp
-      - name: Collect the commit SHAs of the build
+
+      - name: Setup build env
+        run: make setup
+
+      - name: Build software
+        run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp  # Only build the hupfdule-model100 firmware
+
+      - name: Generate the release-notes file
         run: make collect-build-info
-      - name: Add the NEWS as a changelog to the artifacts
-        run: cp NEWS.md output/firmware-changelog.md
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware-build
-          path: |
-            output/
+      - name: Add all commit logs to changelog
+        run: make changelog > output/firmware-changelog.md
 
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    # Ensure this job only runs on pushes to master branch
-    if: github.ref == 'refs/heads/master'
-    env:
-      OUTPUT_DIR: artifacts/firmware-build
-    steps:
-      - uses: actions/checkout@v4
-      - name: Discover the version tag
-        id: version
-        run: |
-          TAG=$(make version-tag)
-          echo "TAG=$TAG" >> $GITHUB_ENV
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Delete the snapshot release and update the tag
-        if: ${{ contains(env.TAG, 'snapshot') }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        shell: bash
-        run: |
-          make update-tag-and-delete-gh-release
-
-      - name: Create the release
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        run: |
-          make create-gh-release
       - name: Package up the artifacts
         shell: bash
         run: |
-          make package-firmware-build
+          tar czvf firmware-files.tar.gz -C output/ .
 
-      - name: Upload the firmware files & build info to the release
-        shell: bash
+      - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          make upload-gh-release
+          # Generate unique tag name with commit SHA and timestamp
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          TAG_NAME="v$TIMESTAMP-$SHORT_SHA"
+
+          # Create and push the tag first
+          git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
+          git push origin $TAG_NAME
+
+          # Create GitHub release
+          gh release create $TAG_NAME \
+            --repo ${{ github.repository }} \
+            --title "Hupfdule m100 Firmware $(make version)" \
+            --target $COMMIT_SHA \
+            --notes "$(git log -1 --pretty=%B)" \
+            --notes-file output/release-notes.md \
+            --latest \
+            output/*/*.bin \
+            firmware-files.tar.gz
+
