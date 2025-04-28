@@ -125,4 +125,6 @@ dependencies:
 
 firmware:
 $(collect_vendor_info Keyboardio)
+blubb
+$(collect_vendor_info hupfdule)
 EOF
