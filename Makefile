@@ -110,7 +110,7 @@ create-gh-release:
 upload-gh-release:
 	gh release upload ${TAG} \
 		firmware-files.tar.gz \
-		${OUTPUT_DIR}/*/*.{bin,hex} \
+		${OUTPUT_DIR}/*/*.bin \
 		${OUTPUT_DIR}/build-info.yml \
 		${OUTPUT_DIR}/firmware-changelog.md
 
