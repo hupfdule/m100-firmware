@@ -103,7 +103,7 @@ update-tag-and-delete-gh-release:
 
 create-gh-release:
 	gh release create -p \
-		-t "Chrysalis Firmware Bundle $(EMBEDDED_VERSION)"\
+		-t "Hupfdule m100 Firmware $(EMBEDDED_VERSION)"\
 		-F ${OUTPUT_DIR}/release-notes.md \
 		${TAG}
 
