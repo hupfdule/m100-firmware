@@ -104,10 +104,8 @@ Hupfdule m100 Firmware $(make --no-print-directory version)
 
 # Changelog
 
-$(git log -1 --pretty=%B)
+$(git log --pretty='# %s%n%nDate:   %ai%nCommit: %H%n%n%b%n' upstream/master..hupfdule-dev2)
 EOF
-#$(extract_current_news)
-#EOF
 
 cat >output/build-info.yml <<EOF
 ---
