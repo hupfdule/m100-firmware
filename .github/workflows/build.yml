@@ -30,7 +30,7 @@ jobs:
           path: ${{ github.workspace}}/.arduino/downloads
           key: ${{ runner.os }}-arduino-downloads
       - run: make setup
-      - run: make all KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp
+      - run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp
       - name: Collect the commit SHAs of the build
         run: make collect-build-info
       - name: Add the NEWS as a changelog to the artifacts
