@@ -47,7 +47,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     # Ensure this job only runs on pushes to master branch
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/hupfdule-dev2'
     env:
       OUTPUT_DIR: artifacts/firmware-build
     steps:
