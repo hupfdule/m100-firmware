@@ -71,11 +71,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}  # Check out the same branch again
-      - name: Discover the version tag
-        id: version
-        run: |
-          TAG=$(make version-tag)
-          echo "TAG=$TAG" >> $GITHUB_ENV
+          #- name: Discover the version tag
+          #  id: version
+          #  run: |
+          #    TAG=$(make version-tag)
+          #    echo "TAG=$TAG" >> $GITHUB_ENV
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
