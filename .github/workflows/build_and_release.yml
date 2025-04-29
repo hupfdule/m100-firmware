@@ -31,9 +31,9 @@ jobs:
         with:
           path: ${{ github.workspace}}/.arduino/downloads
           key: ${{ runner.os }}-arduino-downloads
-        run: make setup
 
       - name: Build software
+        run: make setup
         run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp  # Only build the hupfdule-model100 firmware
 
       - name: Create release with commit-based tag
