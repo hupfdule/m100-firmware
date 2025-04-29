@@ -65,23 +65,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo eins
           # Generate unique tag name with commit SHA and timestami
           TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          echo zwei
           TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
-
-          git branch
-          git log -1
-          echo "-----------"
-          ls -lha output/*
-          echo "-----------"
 
           # Create and push the tag first
           git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
           git push origin $TAG_NAME
 
-          echo drei
           # Create GitHub release
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
@@ -92,6 +83,6 @@ jobs:
             --latest \
             output/*/*.bin \
             output/*.md \
-            output/*.yml
+            output/*.yml \
+            firmware-files.tar.gz
 
-          echo vier
