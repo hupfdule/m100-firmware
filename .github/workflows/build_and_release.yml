@@ -60,7 +60,7 @@ jobs:
             --title "Release for $SHORT_SHA" \
             --notes "Automated release for commit $COMMIT_SHA"
 
-      - run: ls -lha output
+      - run: ls -lha output/*/
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
