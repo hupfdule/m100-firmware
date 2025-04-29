@@ -83,7 +83,7 @@ jobs:
 
       - name: Debug COMMIT_SHA
         run: |
-          echo "env ${{ env }}"
+          printenv
           echo "GITHUB_ENV $GITHUB_ENV"
           git log -1  # Show the latest commit
 
