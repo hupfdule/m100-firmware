@@ -56,7 +56,7 @@ jobs:
       - name: Add all commit logs to changelog     # Add all our commit logs to the changelog
         run: make changelog > output/firmware-changelog.md
 
-      - run: ls -lha output/*/
+      - run: ls -lha output/*
 
       - name: Create release with firmware assets
         env:
