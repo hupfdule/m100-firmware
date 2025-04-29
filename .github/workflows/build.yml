@@ -83,7 +83,8 @@ jobs:
 
       - name: Debug COMMIT_SHA
         run: |
-          echo "COMMIT_SHA: ${{ env.COMMIT_SHA }}"
+          echo "env ${{ env }}"
+          echo "GITHUB_ENV $GITHUB_ENV"
           git log -1  # Show the latest commit
 
       - name: Create the release
