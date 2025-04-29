@@ -62,6 +62,8 @@ jobs:
 
       - run: git log -1 --oneline
 
+      - run: echo ${{ github.repository }}
+
       - name: Create release with firmware assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -76,6 +78,7 @@ jobs:
 
           # Create release and attach firmware files directly
           gh release create $TAG_NAME \
+            --repo ${{ github.repository }} \
             --title "Hupfdule m100 Firmware $(make version)" \
             --notes "Automated release" \
             -F output/release-notes.md \
