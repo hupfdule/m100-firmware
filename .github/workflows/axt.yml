@@ -53,6 +53,9 @@ jobs:
           echo zwei
           TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
 
+          git branch
+          git log -1
+
           echo drei
           # Create GitHub release
           gh release create $TAG_NAME \
