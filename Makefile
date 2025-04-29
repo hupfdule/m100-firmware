@@ -104,6 +104,8 @@ update-tag-and-delete-gh-release:
 	git push origin ${TAG} --force
 
 create-gh-release:
+	@echo TAG: ${TAG}
+	git log -1 --oneline
 	gh release create -p \
 		-t "Hupfdule m100 Firmware $(EMBEDDED_VERSION)"\
 		-F ${OUTPUT_DIR}/release-notes.md \

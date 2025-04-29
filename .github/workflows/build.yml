@@ -92,6 +92,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         run: |
           make create-gh-release
+
       - name: Package up the artifacts
         shell: bash
         run: |
