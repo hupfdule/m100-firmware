@@ -56,12 +56,17 @@ jobs:
           git branch
           git log -1
 
+          # Create and push the tag first
+          git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
+          git push origin $TAG_NAME
+
           echo drei
           # Create GitHub release
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
             --title "Release for $SHORT_SHA" \
-            --notes $(git log -1) \
+            --target $COMMIT_SHA \
+            --notes "$(git log -1 --pretty=%B)" \
 
           echo vier
       - name: Upload build artifacts
