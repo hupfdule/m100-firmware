@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref }}   # Uses the branch that triggered the workflow instead of master
           fetch-depth: 0           # We need to fetch the full history to infer the correct version name
       - name: Add upstream remote  # We need to fetch the upstream source to be able to create the changelog of our own changes
         run: |
