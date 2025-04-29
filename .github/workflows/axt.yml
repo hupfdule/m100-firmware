@@ -53,6 +53,9 @@ jobs:
       - name: Collect the commit SHAs of the build
         run: make collect-build-info
 
+      - name: Add all commit logs to changelog     # Add all our commit logs to the changelog
+        run: make changelog > output/firmware-changelog.md
+
       - name: Create release with commit-based tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
