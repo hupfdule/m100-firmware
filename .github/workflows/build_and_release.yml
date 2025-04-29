@@ -74,5 +74,5 @@ jobs:
           gh release create $TAG_NAME \
             --title "Hupfdule m100 Firmware $(make version)" \
             --notes "Automated release" \
-            -F ${OUTPUT_DIR}/release-notes.md \
+            -F output/release-notes.md \
             output/*/*.bin  # Path to your built firmware file(s)
