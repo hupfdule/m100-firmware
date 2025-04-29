@@ -85,7 +85,7 @@ jobs:
             --notes "$(git log -1 --pretty=%B)" \
             --notes-file output/release-notes.md \
             --latest \
-            output/*/*.bin
-            output/*.md
+            output/*/*.bin \
+            output/*
 
           echo vier
