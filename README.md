@@ -52,3 +52,4 @@ sechs
 sieben
 eins
 eins
+zwei
