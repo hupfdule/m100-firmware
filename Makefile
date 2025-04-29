@@ -107,7 +107,8 @@ create-gh-release:
 	gh release create -p \
 		-t "Hupfdule m100 Firmware $(EMBEDDED_VERSION)"\
 		-F ${OUTPUT_DIR}/release-notes.md \
-		${TAG}
+		${TAG} \
+		--latest
 
 upload-gh-release:
 	gh release upload ${TAG} \
