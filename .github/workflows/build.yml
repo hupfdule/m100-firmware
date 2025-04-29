@@ -42,9 +42,7 @@ jobs:
       - run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp  # Only build the hupfdule-model100 firmware
       - name: Collect the commit SHAs of the build
         run: make collect-build-info
-      - name: Add the NEWS as a changelog to the artifacts
-        run: cp NEWS.md output/firmware-changelog.md
-      - name: Add all commit logs to changelog
+      - name: Add all commit logs to changelog     # Add all our commit logs to the changelog
         run: make changelog > output/firmware-changelog.md
 
       - name: Upload artifacts
