@@ -67,7 +67,7 @@ jobs:
         run: |
           # Generate unique tag name with commit SHA and timestami
           TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
+          TAG_NAME="v$TIMESTAMP-$SHORT_SHA"
 
           # Create and push the tag first
           git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
@@ -82,7 +82,5 @@ jobs:
             --notes-file output/release-notes.md \
             --latest \
             output/*/*.bin \
-            output/*.md \
-            output/*.yml \
             firmware-files.tar.gz
 
