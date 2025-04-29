@@ -67,4 +67,6 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            output/*/*.bin  # Path to your build artifacts
+            output/*/* # Path to your build artifacts
+            output/*
+            output
