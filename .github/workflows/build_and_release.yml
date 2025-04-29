@@ -43,30 +43,39 @@ jobs:
       - name: Build software
         run: make hupfdule-model100 KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp  # Only build the hupfdule-model100 firmware
 
-      - name: Create release with commit-based tag
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Generate unique tag name with commit SHA and timestamp
-          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
+        #- name: Create release with commit-based tag
+        #  env:
+        #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #  run: |
+        #    # Generate unique tag name with commit SHA and timestamp
+        #    TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+        #    TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
 
-          # Create annotated tag
-          git tag -a $TAG_NAME -m "Release for commit $COMMIT_SHA"
-          git push origin $TAG_NAME
+        #    # Create annotated tag
+        #    git tag -a $TAG_NAME -m "Release for commit $COMMIT_SHA"
+        #    git push origin $TAG_NAME
 
-          # Create GitHub release
-          gh release create $TAG_NAME \
-            --title "Release for $SHORT_SHA" \
-            --notes "Automated release for commit $COMMIT_SHA"
+        #    # Create GitHub release
+        #    gh release create $TAG_NAME \
+        #      --title "Release for $SHORT_SHA" \
+        #      --notes "Automated release for commit $COMMIT_SHA"
 
       - run: ls -lha output/*/
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: |
-            output/*/* # Path to your build artifacts
-            output/*
-            output
+      - name: Create release with firmware assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Generate unique tag name
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
+
+          # Tag the commit
+          git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
+          git push origin $TAG_NAME
+
+          # Create release and attach firmware files directly
+          gh release create $TAG_NAME \
+            --title "Release $SHORT_SHA" \
+            --notes "Automated release" \
+            output/*/*.bin  # Path to your built firmware file(s)
