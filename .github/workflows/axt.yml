@@ -86,6 +86,7 @@ jobs:
             --notes-file output/release-notes.md \
             --latest \
             output/*/*.bin \
-            output/*
+            output/*.md \
+            output/*.yml
 
           echo vier
