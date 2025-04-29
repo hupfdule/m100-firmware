@@ -59,7 +59,7 @@ jobs:
       - name: Package up the artifacts
         shell: bash
         run: |
-          make package-firmware-build
+          tar -C output/ czvf firmware-files.tar.gz .
 
       - name: Create release with commit-based tag
         env:
