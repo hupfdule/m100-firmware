@@ -80,6 +80,6 @@ jobs:
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
             --title "Hupfdule m100 Firmware $(make version)" \
-            --notes "Automated release" \
+            --notes $(git log -1) \
             -F output/release-notes.md \
             output/*/*.bin  # Path to your built firmware file(s)
