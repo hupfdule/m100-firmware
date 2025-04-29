@@ -56,6 +56,11 @@ jobs:
       - name: Add all commit logs to changelog     # Add all our commit logs to the changelog
         run: make changelog > output/firmware-changelog.md
 
+      - name: Package up the artifacts
+        shell: bash
+        run: |
+          make package-firmware-build
+
       - name: Create release with commit-based tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
