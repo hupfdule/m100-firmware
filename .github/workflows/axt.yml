@@ -68,6 +68,9 @@ jobs:
 
           git branch
           git log -1
+          echo "-----------"
+          ls -lha output/*
+          echo "-----------"
 
           # Create and push the tag first
           git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
@@ -83,5 +86,6 @@ jobs:
             --notes-file output/release-notes.md \
             --latest \
             output/*/*.bin
+            output/*.md
 
           echo vier
