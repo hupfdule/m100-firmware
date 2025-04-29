@@ -44,3 +44,4 @@ fünf
 sechs
 sieben
 eins
+zwei
