@@ -23,8 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - name: Add upstream remote
+          fetch-depth: 0           # We need to fetch the full history to infer the correct version name
+      - name: Add upstream remote  # We need to fetch the upstream source to be able to create the changelog of our own changes
         run: |
           git remote add upstream https://github.com/keyboardio/Chrysalis-Firmware-Bundle
           git fetch upstream
