@@ -81,6 +81,11 @@ jobs:
         with:
           path: artifacts
 
+      - name: Debug COMMIT_SHA
+        run: |
+          echo "COMMIT_SHA: ${{ env.COMMIT_SHA }}"
+          git log -1  # Show the latest commit
+
       - name: Create the release
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
