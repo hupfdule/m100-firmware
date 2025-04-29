@@ -39,3 +39,4 @@ zwei
 drei
 vier
 fünf
+sechs
