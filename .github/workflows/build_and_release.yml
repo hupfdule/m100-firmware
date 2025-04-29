@@ -58,6 +58,10 @@ jobs:
 
       - run: ls -lha output/*
 
+      - run: git branch
+
+      - run: git log -1 --oneline
+
       - name: Create release with firmware assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
