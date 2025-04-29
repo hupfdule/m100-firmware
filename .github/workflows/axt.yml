@@ -47,19 +47,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo eins
           # Generate unique tag name with commit SHA and timestamp
           TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          echo zwei
           TAG_NAME="commit-$SHORT_SHA-$TIMESTAMP"
 
-          # Create annotated tag
-          git tag -a $TAG_NAME -m "Release for commit $COMMIT_SHA"
-          git push origin $TAG_NAME
-
+          echo drei
           # Create GitHub release
           gh release create $TAG_NAME \
             --title "Release for $SHORT_SHA" \
             --notes $(git log -1) \
 
+          echo vier
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
