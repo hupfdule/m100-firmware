@@ -80,13 +80,8 @@ jobs:
             --title "Hupfdule m100 Firmware $(make version)" \
             --target $COMMIT_SHA \
             --notes "$(git log -1 --pretty=%B)" \
+            --notes-file output/release-notes.md \
             --latest \
             output/*/*.bin
 
           echo vier
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: |
-            output/  # Path to your build artifacts
