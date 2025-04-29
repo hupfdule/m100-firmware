@@ -29,6 +29,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/keyboardio/Chrysalis-Firmware-Bundle
           git fetch upstream
+          git checkout ${{ github.ref }}
       - name: Discover the version tag
         id: version
         run: |
@@ -62,6 +63,8 @@ jobs:
       OUTPUT_DIR: artifacts/firmware-build
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}  # Check out the same branch again
       - name: Discover the version tag
         id: version
         run: |
