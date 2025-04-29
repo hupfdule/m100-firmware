@@ -71,14 +71,6 @@ jobs:
         with:
           path: artifacts
 
-      - name: Delete the snapshot release and update the tag
-        if: ${{ contains(env.TAG, 'snapshot') }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        shell: bash
-        run: |
-          make update-tag-and-delete-gh-release
-
       - name: Create the release
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
