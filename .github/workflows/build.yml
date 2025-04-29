@@ -30,6 +30,12 @@ jobs:
           git remote add upstream https://github.com/keyboardio/Chrysalis-Firmware-Bundle
           git fetch upstream
           git checkout ${{ github.ref }}
+
+      - name: Set COMMIT_SHA to your branch's HEAD
+        id: set_sha
+        run: |
+          echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Discover the version tag
         id: version
         run: |
