@@ -74,7 +74,7 @@ jobs:
           # Create GitHub release
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
-            --title "Release for $SHORT_SHA" \
+            --title "Hupfdule m100 Firmware $(make version)" \
             --target $COMMIT_SHA \
             --notes "$(git log -1 --pretty=%B)" \
 
