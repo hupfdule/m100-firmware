@@ -42,3 +42,4 @@ drei
 vier
 fünf
 sechs
+sieben
