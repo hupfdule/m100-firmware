@@ -50,3 +50,4 @@ vier
 fünf
 sechs
 sieben
+eins
