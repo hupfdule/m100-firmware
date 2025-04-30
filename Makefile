@@ -1,7 +1,10 @@
 VERSION="0.92.6"
 #GIT_TAG=$(shell git tag --points-at HEAD)
-GIT_TAG=$(shell git describe --tags --always --dirty)
-VERSION:=$(GIT_TAG)-hupfdule
+UPSTREAM_TAG=$(shell git describe --abbrev=0 origin/master)
+HUPFDULE_COMMIT=$(shell git rev-parse --short HEAD)
+HUPFDULE_COMMIT_COUNT=$(shell git rev-list --count master..hupfdule-dev)
+DIRTY=$(shell git diff --quiet || echo -dirty)
+VERSION:=$(UPSTREAM_TAG)+$(HUPFDULE_COMMIT_COUNT)-hupfdule-$(HUPFDULE_COMMIT)$(DIRTY)
 
 export ARDUINO_DIRECTORIES_USER ?= ${CURDIR}/.arduino/user
 export ARDUINO_DIRECTORIES_DATA ?= ${CURDIR}/.arduino/data
