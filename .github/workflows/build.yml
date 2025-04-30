@@ -67,8 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Generate unique tag name with commit SHA and timestamp
-          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          TAG_NAME="v$TIMESTAMP-$SHORT_SHA"
+          TAG_NAME=$(make version)
 
           # Create and push the tag first
           git tag -a $TAG_NAME -m "Release for $COMMIT_SHA"
@@ -77,7 +76,7 @@ jobs:
           # Create GitHub release
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
-            --title "Hupfdule m100 Firmware $(make version)" \
+            --title "Hupfdule m100 Firmware ${VERSION}" \
             --target $COMMIT_SHA \
             --notes "$(git log -1 --pretty=%B)" \
             --notes-file output/release-notes.md \
