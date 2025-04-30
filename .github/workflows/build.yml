@@ -76,7 +76,7 @@ jobs:
           # Create GitHub release
           gh release create $TAG_NAME \
             --repo ${{ github.repository }} \
-            --title "Hupfdule m100 Firmware ${VERSION}" \
+            --title "Hupfdule m100 Firmware ${TAG_NAME}" \
             --target $COMMIT_SHA \
             --notes "$(git log -1 --pretty=%B)" \
             --notes-file output/release-notes.md \
