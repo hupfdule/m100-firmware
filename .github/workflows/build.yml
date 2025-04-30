@@ -20,11 +20,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Get full commit history
+          fetch-tags:  true
+
+      - name: Checkout master branch
+        run: |
+          git checkout master           # Additionally checkout the master branch
+          git switch -                  # Switch back to the branch triggering this workflow
 
       - name: Add upstream remote  # We need to fetch the upstream source to be able to create the changelog of our own changes
         run: |
           git remote add upstream https://github.com/keyboardio/Chrysalis-Firmware-Bundle
-          git fetch upstream
+          git fetch upstream --tags
           git checkout ${{ github.ref }}  # Checkout the branch of the commit again to make sure we are operation on that one
 
       - name: Configure Git identity
