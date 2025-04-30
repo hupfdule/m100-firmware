@@ -2,7 +2,7 @@ VERSION="0.92.6"
 #GIT_TAG=$(shell git tag --points-at HEAD)
 UPSTREAM_TAG=$(shell git describe --abbrev=0 origin/master)
 HUPFDULE_COMMIT=$(shell git rev-parse --short HEAD)
-HUPFDULE_COMMIT_COUNT=$(shell git rev-list --count master..hupfdule-dev)
+HUPFDULE_COMMIT_COUNT=$(shell git rev-list --count $(git merge-base master hupfdule-dev)..hupfdule-dev)
 DIRTY=$(shell git diff --quiet || echo -dirty)
 VERSION:=$(UPSTREAM_TAG)+$(HUPFDULE_COMMIT_COUNT)-hupfdule-$(HUPFDULE_COMMIT)$(DIRTY)
 
